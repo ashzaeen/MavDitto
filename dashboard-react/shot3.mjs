@@ -1,0 +1,10 @@
+import { chromium } from 'playwright';
+const b = await chromium.launch();
+const p = await b.newPage({ viewportSize: { width: 1440, height: 900 } });
+await p.goto('http://127.0.0.1:8000/', { waitUntil: 'networkidle' });
+await p.waitForTimeout(500);
+await p.getByRole('button', { name: /Compare two sites/ }).click();
+await p.getByRole('button', { name: /^Options$/ }).click();
+await p.waitForTimeout(300);
+await p.screenshot({ path: '../data/shot-form.png', fullPage: true });
+await b.close(); console.log('ok');

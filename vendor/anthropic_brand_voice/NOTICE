@@ -1,0 +1,31 @@
+MavDitto vendored files -- Anthropic "brand-voice" plugin
+=========================================================
+
+Source:  https://github.com/anthropics/knowledge-work-plugins
+Path:    partner-built/brand-voice/
+License: Apache License 2.0 (see LICENSE in this directory)
+Fetched: 2026-09-29, from the repository's `main` branch
+
+Files copied verbatim (content unmodified; only the file names were
+flattened to live in one directory):
+
+  brand-voice-enforcement.SKILL.md   <- skills/brand-voice-enforcement/SKILL.md
+  voice-constant-tone-flexes.md      <- skills/brand-voice-enforcement/references/voice-constant-tone-flexes.md
+  before-after-examples.md           <- skills/brand-voice-enforcement/references/before-after-examples.md
+  guideline-generation.SKILL.md      <- skills/guideline-generation/SKILL.md
+  quality-assurance.agent.md         <- agents/quality-assurance.md
+
+How MavDitto uses them (src/content_writer/voice_method.py):
+
+  * Selected sections are extracted by heading and inserted into the
+    Content Writer's LLM prompts. Lines that only make sense inside Claude
+    Code / Cowork (slash commands, `.claude/` paths, "delegate to the X
+    agent", reference-file pointers) are dropped at load time.
+  * The sales-oriented tone-by-context matrix and the before/after examples
+    are NOT sent to the model: the examples illustrate the method with
+    invented statistics for a fictional SaaS company, and this tool's
+    guardrail forbids unsourced figures. MavDitto's own university
+    tone-by-context matrix and examples live in config/brand-voice.json.
+
+Nothing in this directory is edited in place; to change behavior, change
+the extraction in voice_method.py or the brand profile in /config.
