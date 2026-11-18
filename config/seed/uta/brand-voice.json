@@ -1,0 +1,169 @@
+{
+  "brand": "UTA",
+  "brand_full_name": "The University of Texas at Arlington",
+  "version": "seed-2",
+  "source_note": "Seed profile from a quick first-pass sample (Mission page, an Admissions Apply page, a few instructional/FAQ pages), extended in seed-2 with rules from UTA's Marketing, Messaging, and Engagement Editorial Guidelines (https://www.uta.edu/administration/mme/brand-standards/editorial-guide). Not a full crawl-based profile -- broadening the sample is a deliberate later follow-up.",
+  "registers": {
+    "institutional": {
+      "label": "Institutional",
+      "used_for": ["mission", "about", "policy"],
+      "description": "Formal, third-person, no contractions, values-forward nouns (\"collaboration,\" \"excellence,\" \"innovation,\" \"integrity\"). Sentences run longer and more compound.",
+      "example": "The University is committed to providing access and ensuring student success, and to a culture of innovation, entrepreneurship, and commercialization of discoveries by our community of scholars."
+    },
+    "prospective_student": {
+      "label": "Prospective-student / service",
+      "used_for": ["admissions", "how-to", "faq"],
+      "description": "Warm, second-person (\"you,\" \"you're\"), plain and direct, occasional exclamation for encouragement, step-by-step instructional structure.",
+      "example": "Applying for admission is easy at UTA and we're here to support you every step of the way!"
+    }
+  },
+  "shared_principles": [
+    "Plain vocabulary, minimal jargon",
+    "Short-to-medium sentences",
+    "Specific facts cited with sources rather than vague superlatives (e.g. citing U.S. News & World Report rather than saying \"top-ranked\")"
+  ],
+  "seed_system_prompt": "Detect or ask which register the target page calls for (institutional vs. prospective-student/service) and write in that register by default. Never let a requested tone (more casual, more formal, punchier) override UTA's baseline: no slang, no overclaiming, no unsourced superlatives, always plausible as something UTA's own Marketing, Messaging, and Engagement office would publish. Prefer concrete facts and sourced figures over generic marketing language. Second person is the default for anything audience-facing (admissions, current students, prospective students); third person for institutional/policy content.",
+  "tone_options": ["Warmer", "More formal", "More concise", "More detailed"],
+  "length_options": ["Match original", "Condense", "Expand"],
+  "guardrail": {
+    "floor_description": "Never generic AI copy that happens to be about UTA. No slang. No overclaiming. No unsourced superlatives. Always plausible as something UTA's own Marketing, Messaging, and Engagement office would publish. A requested tone adjustment (warmer, more formal, more concise, more detailed) changes style within a register -- it never lowers this floor.",
+    "checks": [
+      "no slang or casual internet-speak",
+      "no unsourced superlative claims (\"best,\" \"top,\" \"world-class\") without a citable source",
+      "register consistency: institutional stays third-person/no-contractions, prospective-student stays second-person",
+      "no invented facts, statistics, or quotes not present in the source content"
+    ]
+  },
+
+  "we_are": [
+    {
+      "we_are": "Supportive -- we walk people through what to do next",
+      "we_are_not": "Hand-holding or patronizing -- support is concrete steps, not reassurance",
+      "evidence": "Admissions page: \"we're here to support you every step of the way\"; FAQ/how-to pages are step-by-step. Confidence: medium (seed sample)."
+    },
+    {
+      "we_are": "Ambitious -- we name real achievements",
+      "we_are_not": "Boastful -- every claim of distinction carries its source",
+      "evidence": "Shared principle: cite U.S. News & World Report rather than \"top-ranked\"; guardrail forbids unsourced superlatives. Confidence: high (explicit guidance)."
+    },
+    {
+      "we_are": "Specific -- figures, dates, names, requirements",
+      "we_are_not": "Vague marketing copy that could describe any university",
+      "evidence": "Guardrail floor: \"Never generic AI copy that happens to be about UTA.\" Confidence: high (explicit guidance)."
+    },
+    {
+      "we_are": "Plainspoken -- short-to-medium sentences, plain vocabulary",
+      "we_are_not": "Slangy or casual-internet; also not academic jargon for a general reader",
+      "evidence": "Shared principles; guardrail check \"no slang or casual internet-speak.\" Confidence: high."
+    },
+    {
+      "we_are": "Committed to access and student success",
+      "we_are_not": "Exclusive or gatekeeping in tone",
+      "evidence": "Mission register example: \"committed to providing access and ensuring student success.\" Confidence: medium (one source)."
+    },
+    {
+      "we_are": "Rooted in North Texas -- the Dallas-Fort Worth Metroplex is part of who we are",
+      "we_are_not": "Placeless or generic about location",
+      "evidence": "University boilerplate: \"Located in the heart of the Dallas-Fort Worth Metroplex...\" (UTA News Center, 2025-01-10). Confidence: medium."
+    }
+  ],
+
+  "tone_by_context": {
+    "rewrite-page":       {"formality": 3, "energy": 3, "technical_depth": 3, "note": "Keep the source page's register; tone chips adjust within it."},
+    "new-page":           {"formality": 3, "energy": 3, "technical_depth": 2, "note": "Lead with what the reader can do or learn here."},
+    "program-page":       {"formality": 3, "energy": 3, "technical_depth": 3, "note": "Second person. Outcomes, requirements, and next steps before history."},
+    "landing-page":       {"formality": 2, "energy": 4, "technical_depth": 1, "note": "One goal, one primary call to action, short sections."},
+    "department-page":    {"formality": 4, "energy": 2, "technical_depth": 3, "note": "Institutional register: third person, no contractions."},
+    "compose-page":       {"formality": 3, "energy": 3, "technical_depth": 2, "note": "Plan the block sequence to match the request; lead with a hero."},
+    "news-story":         {"formality": 4, "energy": 3, "technical_depth": 2, "note": "AP style, inverted pyramid. News Center omits the serial comma."},
+    "event-announcement": {"formality": 3, "energy": 4, "technical_depth": 1, "note": "What, when, where, who it's for, and how to register -- in the first two sentences."},
+    "press-release":      {"formality": 5, "energy": 2, "technical_depth": 2, "note": "Dateline, inverted pyramid, attributed quotes only if supplied, boilerplate last."},
+    "spotlight":          {"formality": 3, "energy": 3, "technical_depth": 2, "note": "Story-led; alumni get the degree citation after their name."},
+    "headlines":          {"formality": 3, "energy": 4, "technical_depth": 1, "note": "60 characters or fewer; UTA or UT Arlington is fine in headlines."},
+    "meta-descriptions":  {"formality": 3, "energy": 3, "technical_depth": 1, "note": "155 characters or fewer; say what the page lets the reader do."},
+    "ctas":               {"formality": 2, "energy": 4, "technical_depth": 1, "note": "Start with a verb; 2 to 5 words; say exactly what happens."},
+    "faq-set":            {"formality": 3, "energy": 2, "technical_depth": 2, "note": "Answer in the first sentence, then the detail."},
+    "summary":            {"formality": 3, "energy": 2, "technical_depth": 2, "note": "Keep every figure and requirement; drop everything else."}
+  },
+
+  "terminology": {
+    "preferred": [
+      {"use": "The University of Texas at Arlington", "instead_of": "University of Texas Arlington", "note": "Full name on first reference, with a capital T in The."},
+      {"use": "UTA", "instead_of": "U.T.A.", "note": "Abbreviations take capital letters, no periods, no spaces."},
+      {"use": "UT Arlington", "instead_of": "UT-Arlington", "note": ""},
+      {"use": "No. 1", "instead_of": "#1", "note": "Use No. in running text for rankings; # only in infographics."}
+    ],
+    "banned": [
+      "world-class", "best-in-class", "cutting-edge", "state-of-the-art",
+      "second to none", "unparalleled", "one-of-a-kind", "game-changing",
+      "awesome", "super excited"
+    ],
+    "needs_source": [
+      "nationally recognized", "internationally recognized", "award-winning", "renowned",
+      "top-ranked", "highly ranked", "prestigious", "premier", "one of the best",
+      "one of the top", "leading university", "a leader in", "best-known"
+    ],
+    "style_rules": [
+      "First reference: The University of Texas at Arlington. Later references and headlines: UTA, UT Arlington, or the University.",
+      "Capitalize University when it means UTA; lowercase it for universities in general.",
+      "Capitalize official names but not their parts: the Department of Mathematics, then the department.",
+      "Use the serial comma, except in News Center items (news stories and press releases), which follow AP style without it.",
+      "News Center items follow AP style for dates: abbreviate Jan., Feb., Aug., Sept., Oct., Nov. and Dec. with a specific date (Oct. 6, 2026); spell out March through July; lowercase seasons (fall 2024).",
+      "Times use a.m. and p.m. with no :00 for on-the-hour times (10 a.m.-2 p.m.).",
+      "Phone numbers use hyphens, no parentheses: 817-272-2101.",
+      "Rankings use No. in running text: No. 1, not #1.",
+      "Alumni get a parenthetical after the name: last two digits of the year and degree, most recent first -- e.g. ('99 PhD, '94 MS, Physics).",
+      "Arlington, Dallas, Fort Worth, and other well-known local cities need no state name; otherwise spell out the state.",
+      "American spelling per Merriam-Webster."
+    ]
+  },
+
+  "audiences": [
+    {"key": "prospective-undergrad", "label": "Prospective undergraduates", "description": "High school students and transfer students deciding where to apply; many are first-generation.", "reading_level": "grade 9", "default_register": "prospective-student"},
+    {"key": "prospective-grad", "label": "Prospective graduate students", "description": "Working professionals and recent graduates comparing programs, cost, and format.", "reading_level": "grade 12", "default_register": "prospective-student"},
+    {"key": "families", "label": "Parents and families", "description": "Supporting a student's decision; care about cost, safety, and outcomes.", "reading_level": "grade 9", "default_register": "prospective-student"},
+    {"key": "current-students", "label": "Current students", "description": "Need a task done: register, pay, find a deadline or an office.", "reading_level": "grade 9", "default_register": "prospective-student"},
+    {"key": "faculty-staff", "label": "Faculty and staff", "description": "Internal readers who know the institution; want policy and process detail.", "reading_level": "college", "default_register": "institutional"},
+    {"key": "alumni-donors", "label": "Alumni and donors", "description": "Connected to UTA; respond to impact stories and specific outcomes.", "reading_level": "grade 12", "default_register": "institutional"},
+    {"key": "media", "label": "Media", "description": "Reporters and editors who need the facts, a quote, and a contact quickly.", "reading_level": "grade 12", "default_register": "institutional"},
+    {"key": "community", "label": "Community and general public", "description": "Arlington and Dallas-Fort Worth residents, partners, and visitors.", "reading_level": "grade 10", "default_register": "institutional"}
+  ],
+
+  "examples": [
+    {
+      "template_key": "new-page",
+      "before": "Discover a world of opportunities at UTA, a top-ranked university where you can unlock your potential and take your future to the next level.",
+      "after": "The University of Texas at Arlington is a Carnegie R-1 research university in the heart of the Dallas-Fort Worth Metroplex. In fall 2024, 49% of undergraduates had their full tuition and fees covered by financial aid.",
+      "why": "Replaces three generic AI phrases and an unsourced superlative with two verified facts from the knowledge base; full name on first reference."
+    },
+    {
+      "template_key": "news-story",
+      "before": "UTA is super excited to announce amazing enrollment growth this fall!",
+      "after": "Fall 2024 enrollment at The University of Texas at Arlington reached 41,613 students, with undergraduate enrollment up 3% from the previous year.",
+      "why": "News leads with the fact, not the feeling. Slang and exclamation removed; the figure comes from the University's own release."
+    },
+    {
+      "template_key": "meta-descriptions",
+      "before": "Learn more about UTA admissions. Apply today!",
+      "after": "Apply to UT Arlington: deadlines, requirements, and financial aid for first-year and transfer students, all in one place.",
+      "why": "Says what the page lets the reader do, within 155 characters, with no claims that need a source."
+    },
+    {
+      "template_key": "ctas",
+      "before": "Click here",
+      "after": "Start your application",
+      "why": "Verb-first and specific about what happens next; \"click here\" also fails screen-reader link lists."
+    }
+  ],
+
+  "open_questions": [
+    {
+      "question": "Serial comma: the University editorial guide requires it, but News Center items follow strict AP style without it.",
+      "recommendation": "Use the serial comma everywhere except the news-story and press-release templates."
+    },
+    {
+      "question": "How and when to use Mavericks / Maverick in copy is not covered by the seed sample.",
+      "recommendation": "Use it only where the source material or brief already does, until the MME brand standards are added to this profile."
+    }
+  ]
+}

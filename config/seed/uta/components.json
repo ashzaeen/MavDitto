@@ -1,0 +1,4577 @@
+{
+  "brand": "UTA",
+  "version": "verified-live-3-reconciled-old-new",
+  "source_note": "Extracted live from https://ds.web.uta.edu/components (68 components, Sep 24 2026). Character limits are NOT published on the public site and are deliberately omitted here. 'maxImages'/'maxButtons'/links.max/listing.max are upper bounds only, never confirmed as exact-count requirements. 'sharedCopyUnconfirmed' carries forward the original design doc's claim that these Hero variants inherit page-level Title/Description instead of having their own fields -- not something the public catalog structurally confirms. Migrated to a per-field schema (purpose/fields[]/examples) on 2026-09-28 -- field skeletons (fieldType, constraints) are derived deterministically from the same six verified flags this file always had, never invented by a model; `purpose` and `examples` are the only model-written text, grounded in each component's own crawled notes. Reconciled with UTA's newer digital-design-system site on 2026-09-28: components present on both sites merged into one record (new-site name/text wins per explicit precedence, old site fills gaps); old-only components carried over as-is; new-only components added fresh. Added visualVariant/specialFeatures/screenshotAsset/sourceSites -- special features and visual variant are the only additional model-written data, grounded in each component's own scraped 'Page Details And Notes'/'ABOUT THE COMPONENT' text, never invented.",
+  "components": [
+    {
+      "name": "Academics Search",
+      "category": "Special Use",
+      "purpose": "Use this component to search within the UTA academics programs area. It is not the same as the similar Explore Programs components listed alongside it.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Description",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Link",
+          "fieldType": "link",
+          "constraints": "optional, max not confirmed",
+          "notes": "link mode: optional"
+        },
+        {
+          "name": "Image (up to 2)",
+          "fieldType": "image",
+          "constraints": "max 2 image(s), never confirmed as an exact requirement by the public catalog",
+          "notes": "alt text is populated via the Alt Text tool, not this pipeline"
+        }
+      ],
+      "examples": [],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "classic_look",
+      "specialFeatures": [
+        {
+          "name": "Max # of Images",
+          "description": "Up to 2 images can be included.",
+          "importance": "normal"
+        },
+        {
+          "name": "Buttons",
+          "description": "Buttons are not supported.",
+          "importance": "normal"
+        },
+        {
+          "name": "Links",
+          "description": "Links are optional.",
+          "importance": "normal"
+        },
+        {
+          "name": "Listing",
+          "description": "Listing is not supported.",
+          "importance": "normal"
+        }
+      ],
+      "screenshotAsset": null,
+      "sourceSites": [
+        "old"
+      ]
+    },
+    {
+      "name": "Accordion",
+      "category": "Page Content",
+      "purpose": "Use Accordion when a page needs to hold a lot of text without making the page itself longer, especially for FAQs, terms and conditions, contest rules, and similar information that is important but does not need to be seen immediately. It is not the best choice for content people need to scan quickly at a glance, because the details are hidden until a section is opened.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Body",
+          "fieldType": "richtext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Link",
+          "fieldType": "link",
+          "constraints": "optional, max not confirmed",
+          "notes": "link mode: optional"
+        },
+        {
+          "name": "Listing item",
+          "fieldType": "listing",
+          "constraints": "unlimited items",
+          "notes": "repeatable child item -- populated as one entry per item the section content actually contains, never padded to hit a cap"
+        }
+      ],
+      "examples": [],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "unspecified",
+      "specialFeatures": [
+        {
+          "name": "Accordion with Summary and Paging",
+          "description": "This variation shows a short summary when the accordion is collapsed, and adds pagination when there are many accordions that would otherwise make the page extremely long.",
+          "importance": "normal"
+        },
+        {
+          "name": "Accordion Item order",
+          "description": "Accordion is a parent component with Accordion Item sub-components, and the order of the items in the Content Editor controls the order they appear on the live site.",
+          "importance": "normal"
+        }
+      ],
+      "screenshotAsset": "component-examples/accordion.png",
+      "sourceSites": [
+        "old",
+        "new"
+      ]
+    },
+    {
+      "name": "Announcement Items",
+      "category": "Page Content",
+      "purpose": "Use Announcement Items when you need to add multiple prominent notices to a page or list the subtypes of a main category. It supports optional links, but it is not for image-, video-, or button-based content.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Description",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Link",
+          "fieldType": "link",
+          "constraints": "optional, max not confirmed",
+          "notes": "link mode: optional"
+        },
+        {
+          "name": "Listing item",
+          "fieldType": "listing",
+          "constraints": "unlimited items",
+          "notes": "repeatable child item -- populated as one entry per item the section content actually contains, never padded to hit a cap"
+        }
+      ],
+      "examples": [
+        "A page listing undergraduate, graduate, and certificate application types.",
+        "A set of short notices highlighting key campus service updates."
+      ],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "unspecified",
+      "specialFeatures": [
+        {
+          "name": "Announcement Link",
+          "description": "Use this sub-component for a linkable title.",
+          "importance": "normal"
+        },
+        {
+          "name": "Announcement Title",
+          "description": "Use this sub-component when the title should not link.",
+          "importance": "normal"
+        },
+        {
+          "name": "Mixable item types",
+          "description": "You may use both Announcement Links and Announcement Titles within the same Announcement Items component.",
+          "importance": "normal"
+        },
+        {
+          "name": "Listing guidance",
+          "description": "The component allows technically unlimited listings, though the documentation generally suggests no more than three.",
+          "importance": "normal"
+        }
+      ],
+      "screenshotAsset": "component-examples/announcement-items.png",
+      "sourceSites": [
+        "old",
+        "new"
+      ]
+    },
+    {
+      "name": "College Explore Programs",
+      "category": "Special Use",
+      "purpose": "Use this component to link out to a college’s program pages. It is meant for college/school program links, not for university-wide program pages, which the documentation points editors to the separate Explore Programs component for.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Description",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Link",
+          "fieldType": "link",
+          "constraints": "required, max not confirmed",
+          "notes": "link mode: required"
+        },
+        {
+          "name": "Listing item",
+          "fieldType": "listing",
+          "constraints": "unlimited items",
+          "notes": "repeatable child item -- populated as one entry per item the section content actually contains, never padded to hit a cap"
+        }
+      ],
+      "examples": [],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "unspecified",
+      "specialFeatures": [
+        {
+          "name": "Links required",
+          "description": "This component must contain links.",
+          "importance": "normal"
+        },
+        {
+          "name": "Unlimited listing",
+          "description": "There is no stated limit on how many link entries can be included.",
+          "importance": "normal"
+        },
+        {
+          "name": "Images not supported",
+          "description": "Do not add images to this component.",
+          "importance": "normal"
+        },
+        {
+          "name": "Buttons not supported",
+          "description": "Do not use buttons in this component.",
+          "importance": "normal"
+        },
+        {
+          "name": "Rich text not supported",
+          "description": "Rich text is not available in this component.",
+          "importance": "normal"
+        }
+      ],
+      "screenshotAsset": "component-examples/college-explore-programs.png",
+      "sourceSites": [
+        "old"
+      ]
+    },
+    {
+      "name": "Component Subject Carousel",
+      "category": "Page Content",
+      "purpose": "Use this component when you need a subject carousel that auto-advances and lets the content below each tab change dynamically. It is limited to the supported sub-component sets: Type 1 can use Datapoint Listing, Featured Link List, or Story Card components, while Type 2 is limited to the Horizontal Listing component.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Description",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Button",
+          "fieldType": "button",
+          "constraints": "max 2 button(s); allowed color(s) not confirmed by the public catalog",
+          "notes": ""
+        },
+        {
+          "name": "Image",
+          "fieldType": "image",
+          "constraints": "max 1 image(s), never confirmed as an exact requirement by the public catalog",
+          "notes": "alt text is populated via the Alt Text tool, not this pipeline"
+        },
+        {
+          "name": "Listing item",
+          "fieldType": "listing",
+          "constraints": "unlimited items",
+          "notes": "repeatable child item -- populated as one entry per item the section content actually contains, never padded to hit a cap"
+        }
+      ],
+      "examples": [],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "unspecified",
+      "specialFeatures": [
+        {
+          "name": "Type 1 content",
+          "description": "Supports Datapoint Listing, Featured Link List, and Story Card components.",
+          "importance": "normal"
+        },
+        {
+          "name": "Type 2 content",
+          "description": "Supports the Horizontal Listing component only.",
+          "importance": "normal"
+        }
+      ],
+      "screenshotAsset": "component-examples/component-subject-carousel.png",
+      "sourceSites": [
+        "old",
+        "new"
+      ]
+    },
+    {
+      "name": "CTA Accent",
+      "category": "Page Content",
+      "purpose": "Use CTA Accent for short but important information that needs to catch a user’s attention. It is meant for single-line announcements, and it supports up to two links and up to two buttons.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Description",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Button",
+          "fieldType": "button",
+          "constraints": "max 2 button(s); allowed color(s) not confirmed by the public catalog",
+          "notes": ""
+        }
+      ],
+      "examples": [
+        "A brief campus notice with a short headline and one or two links to more information.",
+        "A single-line announcement promoting an upcoming event with a small image and a call-to-action button."
+      ],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "unspecified",
+      "specialFeatures": [
+        {
+          "name": "Supports max 2 buttons",
+          "description": "This component supports no more than two buttons.",
+          "importance": "normal"
+        },
+        {
+          "name": "Up to 2 links",
+          "description": "The component supports up to two links.",
+          "importance": "normal"
+        },
+        {
+          "name": "Title character limit",
+          "description": "Title text is limited to 100 characters.",
+          "importance": "normal"
+        },
+        {
+          "name": "Body character limit",
+          "description": "Body text is limited to 198 characters.",
+          "importance": "normal"
+        },
+        {
+          "name": "Link character limit",
+          "description": "Links are limited to 50 characters.",
+          "importance": "normal"
+        },
+        {
+          "name": "Automatic blue overlay on image",
+          "description": "The blue overlay is added by the component; do not manually add a blue overlay before uploading the image to the Sitecore Media Library.",
+          "importance": "normal"
+        },
+        {
+          "name": "Recommended image size",
+          "description": "Recommended image size is 1400x550.",
+          "importance": "normal"
+        }
+      ],
+      "screenshotAsset": "component-examples/cta-accent.png",
+      "sourceSites": [
+        "old",
+        "new"
+      ]
+    },
+    {
+      "name": "CTA Billboard",
+      "category": "Page Content",
+      "purpose": "Use this component for a large callout promoting an upcoming event or a key offering a user may be looking for. It supports only one link and is not meant for image-based or multiple-link content.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Body",
+          "fieldType": "richtext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Button",
+          "fieldType": "button",
+          "constraints": "max 1 button(s); allowed color(s) not confirmed by the public catalog",
+          "notes": ""
+        }
+      ],
+      "examples": [],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "unspecified",
+      "specialFeatures": [
+        {
+          "name": "1 link allowed",
+          "description": "Supports up to one link.",
+          "importance": "normal"
+        },
+        {
+          "name": "PS under the main CTA",
+          "description": "This component is unique in that it allows a PS beneath the main CTA.",
+          "importance": "normal"
+        },
+        {
+          "name": "Character limits",
+          "description": "Title: 100 characters; Body: 298; Links: 50; Secondary Text: 198.",
+          "importance": "normal"
+        }
+      ],
+      "screenshotAsset": "component-examples/cta-billboard.png",
+      "sourceSites": [
+        "old",
+        "new"
+      ]
+    },
+    {
+      "name": "CTA Footer Links",
+      "category": "Page Content",
+      "purpose": "Use this component on landing pages to link to up to three main key areas of the site. It is not for adding buttons, and it does not support images.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Description",
+          "fieldType": "plaintext",
+          "constraints": "70 char (from crawl notes)",
+          "notes": ""
+        },
+        {
+          "name": "Link",
+          "fieldType": "link",
+          "constraints": "required, max not confirmed",
+          "notes": "link mode: required"
+        },
+        {
+          "name": "Listing item",
+          "fieldType": "listing",
+          "constraints": "up to 3 item(s)",
+          "notes": "repeatable child item -- populated as one entry per item the section content actually contains, never padded to hit a cap"
+        }
+      ],
+      "examples": [
+        "A landing page footer with links to Admissions, Academics, and Student Life.",
+        "A program page footer with three links to apply, request information, and view curriculum."
+      ],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "unspecified",
+      "specialFeatures": [
+        {
+          "name": "Links required",
+          "description": "This component must include links.",
+          "importance": "critical"
+        },
+        {
+          "name": "Limited to 3",
+          "description": "The listing can include no more than three items.",
+          "importance": "critical"
+        },
+        {
+          "name": "70-character limit in paragraph text",
+          "description": "Paragraph text is limited to 70 characters.",
+          "importance": "normal"
+        },
+        {
+          "name": "Images not supported",
+          "description": "This component does not support images.",
+          "importance": "normal"
+        },
+        {
+          "name": "Buttons not supported",
+          "description": "This component does not support buttons.",
+          "importance": "normal"
+        }
+      ],
+      "screenshotAsset": "component-examples/cta-footer-links.png",
+      "sourceSites": [
+        "old"
+      ]
+    },
+    {
+      "name": "CTA Link List",
+      "category": "Page Content",
+      "purpose": "Use this component when you want to place two main CTA buttons or links in the body of a page and offer a few additional link options alongside them. It is not for rich text, images, or video, and it is limited to a small set of linked calls to action rather than a larger content block.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Description",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Button",
+          "fieldType": "button",
+          "constraints": "max 2 button(s); allowed color(s) not confirmed by the public catalog",
+          "notes": ""
+        },
+        {
+          "name": "Link",
+          "fieldType": "link",
+          "constraints": "optional, max not confirmed",
+          "notes": "link mode: optional"
+        }
+      ],
+      "examples": [
+        "A page section with two prominent links to request information and apply, plus several smaller related links beside them.",
+        "A detail page callout with two main action links and a short list of related resources to the right."
+      ],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "unspecified",
+      "specialFeatures": [
+        {
+          "name": "Main CTA links/buttons",
+          "description": "Supports two main links styled as colored CTAs/buttons.",
+          "importance": "normal"
+        },
+        {
+          "name": "Additional links",
+          "description": "Allows up to five additional links to the right of the main CTAs; the notes also describe the component as allowing up to seven links total.",
+          "importance": "normal"
+        }
+      ],
+      "screenshotAsset": "component-examples/cta-link-list.png",
+      "sourceSites": [
+        "old",
+        "new"
+      ]
+    },
+    {
+      "name": "CTA Overlay",
+      "category": "Page Content",
+      "purpose": "Editors use CTA Overlay to break up a repetitive page with a narrow image-led call to action. It supports only one image and one button, with links optional, so it is not meant for rich-text-heavy content or multi-image layouts.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Description",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Button",
+          "fieldType": "button",
+          "constraints": "max 1 button(s); allowed color(s) not confirmed by the public catalog",
+          "notes": ""
+        },
+        {
+          "name": "Link",
+          "fieldType": "link",
+          "constraints": "optional, max not confirmed",
+          "notes": "link mode: optional"
+        },
+        {
+          "name": "Image",
+          "fieldType": "image",
+          "constraints": "max 1 image(s), never confirmed as an exact requirement by the public catalog",
+          "notes": "alt text is populated via the Alt Text tool, not this pipeline"
+        }
+      ],
+      "examples": [],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "classic_look",
+      "specialFeatures": [
+        {
+          "name": "Max # of Images",
+          "description": "Limited to one image.",
+          "importance": "normal"
+        },
+        {
+          "name": "Buttons",
+          "description": "One button is supported.",
+          "importance": "normal"
+        },
+        {
+          "name": "Links",
+          "description": "Links are optional.",
+          "importance": "normal"
+        },
+        {
+          "name": "Image Size",
+          "description": "Recommended size is 1000x250 pixels.",
+          "importance": "normal"
+        }
+      ],
+      "screenshotAsset": null,
+      "sourceSites": [
+        "old"
+      ]
+    },
+    {
+      "name": "CTA Rich Text",
+      "category": "Page Content",
+      "purpose": "Use this component for a simple callout in the main body of a page when you want a standard CTA with up to 2 links. Despite the name, it does not support rich text, so it is not for rich-text content, images, video, or icons.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Description",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Button",
+          "fieldType": "button",
+          "constraints": "max 2 button(s); allowed color(s) not confirmed by the public catalog",
+          "notes": ""
+        }
+      ],
+      "examples": [],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "unspecified",
+      "specialFeatures": [
+        {
+          "name": "Buttons",
+          "description": "Up to 2 links/buttons can be included in the CTA.",
+          "importance": "normal"
+        },
+        {
+          "name": "Button character limit",
+          "description": "Buttons have a limit of 50 characters.",
+          "importance": "normal"
+        },
+        {
+          "name": "Title length",
+          "description": "Title is unlimited.",
+          "importance": "normal"
+        },
+        {
+          "name": "Description length",
+          "description": "Description is unlimited.",
+          "importance": "normal"
+        }
+      ],
+      "screenshotAsset": "component-examples/cta-rich-text.png",
+      "sourceSites": [
+        "old",
+        "new"
+      ]
+    },
+    {
+      "name": "CTA Right Rail",
+      "category": "Sidebars",
+      "purpose": "Use this component to place a simple call to action in a rail area on a page that supports rail components. It is meant for secondary or tertiary content, not for rich text or image-heavy content.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Description",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Button",
+          "fieldType": "button",
+          "constraints": "max 1 button(s); allowed color(s) not confirmed by the public catalog",
+          "notes": ""
+        },
+        {
+          "name": "Link",
+          "fieldType": "link",
+          "constraints": "optional, max not confirmed",
+          "notes": "link mode: unspecified"
+        }
+      ],
+      "examples": [
+        "A short promotional CTA with a linked title and brief description in a page sidebar.",
+        "A reminder-style message with a single call-to-action link in the left or right rail."
+      ],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "unspecified",
+      "specialFeatures": [
+        {
+          "name": "Rail placement",
+          "description": "Can be used on pages that support rail components, and it may appear in either the left or right rail depending on the template and placeholder.",
+          "importance": "normal"
+        },
+        {
+          "name": "Character limits",
+          "description": "Title and description have unlimited character length; the link field is limited to 50 characters.",
+          "importance": "normal"
+        },
+        {
+          "name": "No media support",
+          "description": "Images are not supported; the new documentation also notes no video or icons.",
+          "importance": "normal"
+        }
+      ],
+      "screenshotAsset": "component-examples/cta-right-rail.png",
+      "sourceSites": [
+        "old",
+        "new"
+      ]
+    },
+    {
+      "name": "CTA Right Rail Accent",
+      "category": "Sidebars",
+      "purpose": "Use this rail item as the main call to action in a page’s left or right rail. It is the blue version of the CTA Right Rail Accent and is materially the same component, so it’s meant for rail areas rather than non-rail content.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Description",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Button",
+          "fieldType": "button",
+          "constraints": "max 1 button(s); allowed color(s) not confirmed by the public catalog",
+          "notes": ""
+        }
+      ],
+      "examples": [],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "unspecified",
+      "specialFeatures": [
+        {
+          "name": "Link character limit",
+          "description": "Link text is limited to 50 characters.",
+          "importance": "normal"
+        },
+        {
+          "name": "Built-in image gradient",
+          "description": "Includes a built-in image gradient on either the bottom or the left, selected in the Details pane.",
+          "importance": "normal"
+        },
+        {
+          "name": "Buttons and links",
+          "description": "The component supports buttons and links.",
+          "importance": "normal"
+        }
+      ],
+      "screenshotAsset": "component-examples/cta-right-rail-accent.png",
+      "sourceSites": [
+        "old",
+        "new"
+      ]
+    },
+    {
+      "name": "CTA Right Rail Accent Rich Text",
+      "category": "Sidebars",
+      "purpose": "Use this right-rail CTA when you need the same pattern as CTA Right Rail Accent but with editable rich text in the description. It’s meant for short, important information such as registration or event details, and it isn’t for image-based content because images aren’t supported.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Body",
+          "fieldType": "richtext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Button",
+          "fieldType": "button",
+          "constraints": "max 1 button(s); allowed color(s) not confirmed by the public catalog",
+          "notes": ""
+        }
+      ],
+      "examples": [],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "unspecified",
+      "specialFeatures": [
+        {
+          "name": "Rich Text Description",
+          "description": "This variant adds a Rich Text field to the description area.",
+          "importance": "normal"
+        },
+        {
+          "name": "Paragraph Tags Required",
+          "description": "Copy should be wrapped in paragraph (p) tags, or the content may appear centered with no margin between the text and the button.",
+          "importance": "critical"
+        },
+        {
+          "name": "Character Limits",
+          "description": "Title: unlimited; Description: unlimited; Link: 50 characters.",
+          "importance": "normal"
+        }
+      ],
+      "screenshotAsset": "component-examples/cta-right-rail-accent-rich-text.png",
+      "sourceSites": [
+        "old",
+        "new"
+      ]
+    },
+    {
+      "name": "CTA Right Rail Detail",
+      "category": "Sidebars",
+      "purpose": "Use this when you need a CTA in a right-rail placement with a richer description field for secondary or tertiary content. It is essentially the same as CTA Right Rail, so this is the one to choose when you need that added rich-text description rather than a different component pattern.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Body",
+          "fieldType": "richtext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Button",
+          "fieldType": "button",
+          "constraints": "max 1 button(s); allowed color(s) not confirmed by the public catalog",
+          "notes": ""
+        }
+      ],
+      "examples": [],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "unspecified",
+      "specialFeatures": [
+        {
+          "name": "Rich Text in Description",
+          "description": "The Description field accepts rich text.",
+          "importance": "normal"
+        },
+        {
+          "name": "Link character limit",
+          "description": "The Link field is limited to 50 characters.",
+          "importance": "normal"
+        }
+      ],
+      "screenshotAsset": "component-examples/cta-right-rail-detail.png",
+      "sourceSites": [
+        "old",
+        "new"
+      ]
+    },
+    {
+      "name": "CTA Right Rail Listing",
+      "category": "Sidebars",
+      "purpose": "Use this right-rail CTA listing to display upcoming events, meetings, seminars, and similar items. It includes date, time, and venue fields, and it is not the same as the similarly named Right Rail Listing component; the two are not interchangeable.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Description",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Button",
+          "fieldType": "button",
+          "constraints": "max 1 button(s); allowed color(s) not confirmed by the public catalog",
+          "notes": ""
+        },
+        {
+          "name": "Listing item",
+          "fieldType": "listing",
+          "constraints": "unlimited items",
+          "notes": "repeatable child item -- populated as one entry per item the section content actually contains, never padded to hit a cap"
+        }
+      ],
+      "examples": [
+        "A short list of upcoming department seminars, each with a title, date, time, and venue.",
+        "A set of meeting announcements for a student organization with the event location listed in each item."
+      ],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "unspecified",
+      "specialFeatures": [
+        {
+          "name": "Recommended maximum of five listings",
+          "description": "The component allows unlimited listings, but the guidance recommends keeping the list to five as a best practice.",
+          "importance": "normal"
+        },
+        {
+          "name": "Parent/child setup",
+          "description": "Create the CTA Right Rail Listing Items parent first, then add individual Listing Item entries beneath it.",
+          "importance": "normal"
+        }
+      ],
+      "screenshotAsset": "component-examples/cta-right-rail-listing.png",
+      "sourceSites": [
+        "old",
+        "new"
+      ]
+    },
+    {
+      "name": "CTA Right Rail Quick Links",
+      "category": "Sidebars",
+      "purpose": "Use this component to place a small set of important quick links in a sidebar/right rail. It is for links only: the text says links are required, while images and buttons are not supported.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Description",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Link",
+          "fieldType": "link",
+          "constraints": "required, max not confirmed",
+          "notes": "link mode: required"
+        }
+      ],
+      "examples": [],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "unspecified",
+      "specialFeatures": [
+        {
+          "name": "Up to five links",
+          "description": "This component can contain no more than five links.",
+          "importance": "critical"
+        },
+        {
+          "name": "Links required",
+          "description": "The component must include links.",
+          "importance": "critical"
+        },
+        {
+          "name": "Title character limit",
+          "description": "The title is limited to 100 characters.",
+          "importance": "normal"
+        },
+        {
+          "name": "Link character limit",
+          "description": "Each link is limited to 50 characters.",
+          "importance": "normal"
+        },
+        {
+          "name": "Images not supported",
+          "description": "Recommended image size is not applicable because images are not supported.",
+          "importance": "normal"
+        },
+        {
+          "name": "Buttons not supported",
+          "description": "Buttons are not supported in this component.",
+          "importance": "normal"
+        }
+      ],
+      "screenshotAsset": "component-examples/cta-right-rail-quick-links.png",
+      "sourceSites": [
+        "old",
+        "new"
+      ]
+    },
+    {
+      "name": "CTA Right Rail Image",
+      "category": "Sidebars",
+      "purpose": "Use this component on pages with a left or right rail when you want to pair a CTA with an image for more visual interest. It does not use a CTA button; the title is the link, so it is not for button-based calls to action.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Body",
+          "fieldType": "richtext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Link",
+          "fieldType": "link",
+          "constraints": "optional, max not confirmed",
+          "notes": "link mode: optional"
+        },
+        {
+          "name": "Image",
+          "fieldType": "image",
+          "constraints": "max 1 image(s), never confirmed as an exact requirement by the public catalog",
+          "notes": "alt text is populated via the Alt Text tool, not this pipeline"
+        }
+      ],
+      "examples": [],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "unspecified",
+      "specialFeatures": [
+        {
+          "name": "Single image",
+          "description": "Supports only one image.",
+          "importance": "normal"
+        },
+        {
+          "name": "Title as link",
+          "description": "There is no CTA button; the title serves as the link.",
+          "importance": "normal"
+        },
+        {
+          "name": "Recommended image size",
+          "description": "500x500 at 72DPI.",
+          "importance": "normal"
+        },
+        {
+          "name": "No buttons",
+          "description": "Buttons are not supported.",
+          "importance": "normal"
+        }
+      ],
+      "screenshotAsset": "component-examples/cta-right-rail-image.png",
+      "sourceSites": [
+        "old",
+        "new"
+      ]
+    },
+    {
+      "name": "CTA Two Column Accent",
+      "category": "Page Content",
+      "purpose": "Use this for a main call to action on a Section Landing page. It is not for listing content, and it does not support images.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Body",
+          "fieldType": "richtext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Button",
+          "fieldType": "button",
+          "constraints": "max 1 button(s); allowed color(s) not confirmed by the public catalog",
+          "notes": ""
+        },
+        {
+          "name": "Link",
+          "fieldType": "link",
+          "constraints": "optional, max not confirmed",
+          "notes": "link mode: optional"
+        }
+      ],
+      "examples": [
+        "A short promotional message with one button leading to a key university service.",
+        "A two-column callout with supportive text on one side and a single action link on the other."
+      ],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "unspecified",
+      "specialFeatures": [
+        {
+          "name": "Two-column placeholders",
+          "description": "Uses two placeholders: /maincontent/two-column/left-content and /maincontent/two-column/right-content.",
+          "importance": "normal"
+        },
+        {
+          "name": "Buttons",
+          "description": "Allows exactly 1 button.",
+          "importance": "critical"
+        },
+        {
+          "name": "Links",
+          "description": "Links are optional.",
+          "importance": "normal"
+        },
+        {
+          "name": "Images",
+          "description": "Images are not supported.",
+          "importance": "normal"
+        },
+        {
+          "name": "Listing",
+          "description": "Listing is not supported.",
+          "importance": "normal"
+        }
+      ],
+      "screenshotAsset": "component-examples/cta-two-column-accent.png",
+      "sourceSites": [
+        "old"
+      ]
+    },
+    {
+      "name": "CTA with Links",
+      "category": "Page Content",
+      "purpose": "Use this component for a call-to-action block that pairs up to four images with a title, description, and a set of links. It is not for buttons, and if you only need two links, the text says a different component such as CTA Rich Text is a better fit.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Description",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Link",
+          "fieldType": "link",
+          "constraints": "max 10",
+          "notes": "link mode: optional"
+        },
+        {
+          "name": "Image (up to 4)",
+          "fieldType": "image",
+          "constraints": "max 4 image(s), never confirmed as an exact requirement by the public catalog",
+          "notes": "alt text is populated via the Alt Text tool, not this pipeline"
+        }
+      ],
+      "examples": [
+        "A program spotlight with a short heading, one-sentence description, three related resource links, and a small image for each topic.",
+        "A service overview with a title, brief supporting copy, four image tiles, and a list of links to related pages."
+      ],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "unspecified",
+      "specialFeatures": [
+        {
+          "name": "Up to 10 links",
+          "description": "The component supports as many as ten links.",
+          "importance": "normal"
+        },
+        {
+          "name": "Recommended minimum of 3 links",
+          "description": "The documentation recommends using at least three links for this component.",
+          "importance": "normal"
+        },
+        {
+          "name": "Use a different component for only 2 links",
+          "description": "If you only need two links, the documentation points editors to CTA Rich Text instead.",
+          "importance": "normal"
+        }
+      ],
+      "screenshotAsset": "component-examples/cta-with-links.png",
+      "sourceSites": [
+        "old",
+        "new"
+      ]
+    },
+    {
+      "name": "Datapoint Listing",
+      "category": "Page Content",
+      "purpose": "Use Datapoint Listing to present rankings or other numerical data in a compact list. Editors can choose a static datapoint item or a dynamic item that counts up from a user-specified number; it is not for image-based content, since images are not supported.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Description",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Button",
+          "fieldType": "button",
+          "constraints": "max 1 button(s); allowed color(s) not confirmed by the public catalog",
+          "notes": ""
+        },
+        {
+          "name": "Link",
+          "fieldType": "link",
+          "constraints": "optional, max not confirmed",
+          "notes": "link mode: unspecified"
+        },
+        {
+          "name": "Listing item",
+          "fieldType": "listing",
+          "constraints": "up to 6 item(s)",
+          "notes": "repeatable child item -- populated as one entry per item the section content actually contains, never padded to hit a cap"
+        }
+      ],
+      "examples": [],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "unspecified",
+      "specialFeatures": [
+        {
+          "name": "Change number of datapoint listings",
+          "description": "In Presentation Details, the parent listing can be set to a different number of datapoint items.",
+          "importance": "normal"
+        },
+        {
+          "name": "Background",
+          "description": "Presentation Details lets the listing use a transparent or gray background; a light gray option is also noted.",
+          "importance": "normal"
+        },
+        {
+          "name": "Datapoint Item",
+          "description": "A child item for a static number or piece of text; it can be letters, numbers, or any combination, and supports FontAwesome icons.",
+          "importance": "normal"
+        },
+        {
+          "name": "Dynamic Datapoint Item",
+          "description": "A child item for numerical datapoints that count up from a user-specified number; it supports prefixes such as dollar sign, hashtag, and \"No.\", and icons are enabled from the parent listing switch.",
+          "importance": "normal"
+        }
+      ],
+      "screenshotAsset": "component-examples/datapoint-listing.png",
+      "sourceSites": [
+        "old",
+        "new"
+      ]
+    },
+    {
+      "name": "Event Listing",
+      "category": "Page Content",
+      "purpose": "Use this component to display an event listing where each item includes a date and an event title. It is not for adding images, buttons, or links, since those are not supported.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Description",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Listing item",
+          "fieldType": "listing",
+          "constraints": "unlimited items",
+          "notes": "repeatable child item -- populated as one entry per item the section content actually contains, never padded to hit a cap"
+        }
+      ],
+      "examples": [],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "unspecified",
+      "specialFeatures": [
+        {
+          "name": "Unlimited listing",
+          "description": "The component supports an unlimited number of listed items.",
+          "importance": "normal"
+        }
+      ],
+      "screenshotAsset": "component-examples/event-listing.png",
+      "sourceSites": [
+        "old"
+      ]
+    },
+    {
+      "name": "Explore Programs",
+      "category": "Page Content",
+      "purpose": "Use this component to link to university program pages. It is not for college-level program links; the text points to a separate College Explore Programs component for those.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Description",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Link",
+          "fieldType": "link",
+          "constraints": "required, max not confirmed",
+          "notes": "link mode: required"
+        },
+        {
+          "name": "Listing item",
+          "fieldType": "listing",
+          "constraints": "unlimited items",
+          "notes": "repeatable child item -- populated as one entry per item the section content actually contains, never padded to hit a cap"
+        }
+      ],
+      "examples": [],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "unspecified",
+      "specialFeatures": [
+        {
+          "name": "Links required",
+          "description": "This component must include links.",
+          "importance": "critical"
+        },
+        {
+          "name": "Unlimited listing",
+          "description": "There is no stated limit on the number of linked items.",
+          "importance": "normal"
+        },
+        {
+          "name": "Images not supported",
+          "description": "Do not add images to this component.",
+          "importance": "normal"
+        },
+        {
+          "name": "Buttons not supported",
+          "description": "Do not add buttons to this component.",
+          "importance": "normal"
+        }
+      ],
+      "screenshotAsset": "component-examples/explore-programs.png",
+      "sourceSites": [
+        "old"
+      ]
+    },
+    {
+      "name": "Feature Interest",
+      "category": "Page Content",
+      "purpose": "Use this component when you want a small set of image-based links that point to other sections of the site. It is meant for a visual landing-page style presentation with a title and short description for each item, rather than for long-form content.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Description",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Link",
+          "fieldType": "link",
+          "constraints": "required, max not confirmed",
+          "notes": "link mode: required"
+        },
+        {
+          "name": "Image",
+          "fieldType": "image",
+          "constraints": "max 1 image(s), never confirmed as an exact requirement by the public catalog",
+          "notes": "alt text is populated via the Alt Text tool, not this pipeline"
+        },
+        {
+          "name": "Listing item",
+          "fieldType": "listing",
+          "constraints": "up to 4 item(s)",
+          "notes": "repeatable child item -- populated as one entry per item the section content actually contains, never padded to hit a cap"
+        }
+      ],
+      "examples": [],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "new_look",
+      "specialFeatures": [
+        {
+          "name": "Up to 4 items",
+          "description": "The component can display as many as four Featured Interest items in the same row.",
+          "importance": "normal"
+        },
+        {
+          "name": "Description placement",
+          "description": "The description can be shown either inside the image, where it appears on hover, or below the image, where it stays visible.",
+          "importance": "normal"
+        },
+        {
+          "name": "Links required",
+          "description": "Each Featured Interest item must include a link.",
+          "importance": "critical"
+        },
+        {
+          "name": "Recommended image size",
+          "description": "Recommended image size is 500x500.",
+          "importance": "normal"
+        }
+      ],
+      "screenshotAsset": "component-examples/feature-interest.png",
+      "sourceSites": [
+        "old",
+        "new"
+      ]
+    },
+    {
+      "name": "Featured Link List",
+      "category": "Page Content",
+      "purpose": "Use this component for a prominent, titled cluster of up to seven links when you want to call attention to a set of related resources, such as colleges and schools, an org-chart-style navigation, or important documents. It is not for image-, button-, or rich-text-driven content.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Description",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Link",
+          "fieldType": "link",
+          "constraints": "required, max not confirmed",
+          "notes": "link mode: required"
+        },
+        {
+          "name": "Listing item",
+          "fieldType": "listing",
+          "constraints": "up to 7 item(s)",
+          "notes": "repeatable child item -- populated as one entry per item the section content actually contains, never padded to hit a cap"
+        }
+      ],
+      "examples": [
+        "A list of links to several academic units or colleges on a landing page.",
+        "A small set of links to key downloadable policies or forms."
+      ],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "unspecified",
+      "specialFeatures": [
+        {
+          "name": "Up to seven links",
+          "description": "The component supports no more than seven featured links.",
+          "importance": "normal"
+        },
+        {
+          "name": "Links required",
+          "description": "The component must include links.",
+          "importance": "normal"
+        },
+        {
+          "name": "Title character limit",
+          "description": "The title is limited to 100 characters.",
+          "importance": "normal"
+        },
+        {
+          "name": "Link character limit",
+          "description": "Each link label is limited to 50 characters.",
+          "importance": "normal"
+        }
+      ],
+      "screenshotAsset": "component-examples/featured-link-list.png",
+      "sourceSites": [
+        "old",
+        "new"
+      ]
+    },
+    {
+      "name": "Featured News",
+      "category": "News",
+      "purpose": "Use Featured News to display a small set of news articles on supported article and landing page templates. It is for featured story content, not for general news content, and it can only surface articles that were entered on the News Detail Page template.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Description",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Listing item",
+          "fieldType": "listing",
+          "constraints": "up to 6 item(s)",
+          "notes": "repeatable child item -- populated as one entry per item the section content actually contains, never padded to hit a cap"
+        }
+      ],
+      "examples": [],
+      "dynamic": true,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "unspecified",
+      "specialFeatures": [
+        {
+          "name": "Selection mode",
+          "description": "The component can be populated by manually selecting stories or by automatically pulling stories from a chosen news folder.",
+          "importance": "normal"
+        },
+        {
+          "name": "News Folder",
+          "description": "In automatic mode, choose the parent news folder to populate the component.",
+          "importance": "normal"
+        },
+        {
+          "name": "Topic filter",
+          "description": "In automatic mode, you can optionally select a Topic to filter the stories.",
+          "importance": "normal"
+        },
+        {
+          "name": "Article source restriction",
+          "description": "The component can only pull news articles that were entered on the News Detail Page template.",
+          "importance": "critical"
+        },
+        {
+          "name": "Article count",
+          "description": "The component displays five news articles.",
+          "importance": "normal"
+        }
+      ],
+      "screenshotAsset": "component-examples/featured-news.png",
+      "sourceSites": [
+        "old",
+        "new"
+      ]
+    },
+    {
+      "name": "Footer",
+      "category": "Global",
+      "purpose": "A global footer component for the site’s footer area. Use it for the site-wide footer rather than page-specific content.",
+      "fields": [],
+      "examples": [],
+      "dynamic": false,
+      "chrome": true,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "classic_look",
+      "specialFeatures": [],
+      "screenshotAsset": "component-examples/footer.png",
+      "sourceSites": [
+        "old"
+      ]
+    },
+    {
+      "name": "Generic Cards",
+      "category": "Page Content",
+      "purpose": "Use Generic Cards to present items with a short description and, optionally, a button link to a page with more information. It also supports search, filtering, and sorting to narrow a longer list, especially when the items fall into different categories.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Description",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Button",
+          "fieldType": "button",
+          "constraints": "max 1 button(s); allowed color(s) not confirmed by the public catalog",
+          "notes": ""
+        },
+        {
+          "name": "Image",
+          "fieldType": "image",
+          "constraints": "max 1 image(s), never confirmed as an exact requirement by the public catalog",
+          "notes": "alt text is populated via the Alt Text tool, not this pipeline"
+        }
+      ],
+      "examples": [
+        "A grid of campus services, each with a brief summary and a button to learn more.",
+        "A set of program offerings that can be searched and filtered by category."
+      ],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "unspecified",
+      "specialFeatures": [
+        {
+          "name": "Search / Filter / Sort",
+          "description": "The cards can be searched, filtered, and sorted to narrow down the number of items displayed.",
+          "importance": "normal"
+        },
+        {
+          "name": "Max # of Images",
+          "description": "Only one image is supported.",
+          "importance": "normal"
+        },
+        {
+          "name": "Buttons",
+          "description": "One button is supported.",
+          "importance": "normal"
+        },
+        {
+          "name": "Links",
+          "description": "No links are supported.",
+          "importance": "normal"
+        }
+      ],
+      "screenshotAsset": null,
+      "sourceSites": [
+        "old"
+      ]
+    },
+    {
+      "name": "Generic Iframe",
+      "category": "Page Content",
+      "purpose": "Use this component to display content pulled in from another page, such as a form or a calendar. It is not for adding buttons or image-based content.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Description",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Link",
+          "fieldType": "link",
+          "constraints": "optional, max not confirmed",
+          "notes": "link mode: unspecified"
+        }
+      ],
+      "examples": [
+        "An embedded event calendar from another page.",
+        "A form shown within a page section."
+      ],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "unspecified",
+      "specialFeatures": [],
+      "screenshotAsset": "component-examples/generic-iframe.png",
+      "sourceSites": [
+        "old"
+      ]
+    },
+    {
+      "name": "Glossary",
+      "category": "Page Content",
+      "purpose": "Use the glossary component to display a list of terms and definitions. It is also described as a reusable repository of terms that can be created once and used on separate pages.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Description",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        }
+      ],
+      "examples": [
+        "A page that lists academic program terms with brief definitions.",
+        "A shared set of campus-specific terminology used across multiple content pages."
+      ],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "classic_look",
+      "specialFeatures": [],
+      "screenshotAsset": null,
+      "sourceSites": [
+        "old"
+      ]
+    },
+    {
+      "name": "Gradient Hero",
+      "category": "Headers",
+      "purpose": "Used for a basic hero that displays the page title and page description over a blurred background image. It is not for adding component-specific copy, links, or buttons; those details come from the parent page fields, and the component’s only selectable field is the image.",
+      "fields": [
+        {
+          "name": "Page Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": "inherits from the parent page's field, not its own -- unconfirmed by the public catalog"
+        },
+        {
+          "name": "Page Description",
+          "fieldType": "plaintext",
+          "constraints": "197 char (from crawl notes)",
+          "notes": "inherits from the parent page's field, not its own -- unconfirmed by the public catalog"
+        },
+        {
+          "name": "Image",
+          "fieldType": "image",
+          "constraints": "max 1 image(s), never confirmed as an exact requirement by the public catalog",
+          "notes": "alt text is populated via the Alt Text tool, not this pipeline"
+        }
+      ],
+      "examples": [],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": true,
+      "visualVariant": "unspecified",
+      "specialFeatures": [],
+      "screenshotAsset": "component-examples/gradient-hero.png",
+      "sourceSites": [
+        "old",
+        "new"
+      ]
+    },
+    {
+      "name": "Header",
+      "category": "Global",
+      "purpose": "A global header component for site-wide use. The old documentation gives no further guidance on differences or alternatives.",
+      "fields": [],
+      "examples": [],
+      "dynamic": false,
+      "chrome": true,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "unspecified",
+      "specialFeatures": [],
+      "screenshotAsset": "component-examples/header.png",
+      "sourceSites": [
+        "old"
+      ]
+    },
+    {
+      "name": "Hero",
+      "category": "Headers",
+      "purpose": "Use this as the default hero for a page when the hero should not include an image. It is not for image-based hero treatments or for content that needs buttons, links, or listings.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Description",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        }
+      ],
+      "examples": [
+        "A page heading with a short introductory message displayed at the top of an article detail page.",
+        "A landing page hero that presents title text only, without imagery or call-to-action buttons."
+      ],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "unspecified",
+      "specialFeatures": [],
+      "screenshotAsset": null,
+      "sourceSites": [
+        "old"
+      ]
+    },
+    {
+      "name": "Hero Compact",
+      "category": "Headers",
+      "purpose": "Use Hero Compact when you want a shorter hero area that lets users get to the page content quickly while still showing a photo or video unobstructed. It is not the Gradient Hero, which is vertically shorter but places a gradient over the image.",
+      "fields": [
+        {
+          "name": "Page Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": "inherits from the parent page's field, not its own -- unconfirmed by the public catalog"
+        },
+        {
+          "name": "Page Description",
+          "fieldType": "plaintext",
+          "constraints": "250 char (from crawl notes)",
+          "notes": "inherits from the parent page's field, not its own -- unconfirmed by the public catalog"
+        },
+        {
+          "name": "Image",
+          "fieldType": "image",
+          "constraints": "max 1 image(s), never confirmed as an exact requirement by the public catalog",
+          "notes": "alt text is populated via the Alt Text tool, not this pipeline"
+        }
+      ],
+      "examples": [
+        "A page header with a landscape photo and the page title/description introducing an academic program.",
+        "A landing page with a short video hero above the first section of content."
+      ],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": true,
+      "visualVariant": "unspecified",
+      "specialFeatures": [
+        {
+          "name": "Add via Hero Full or Compact",
+          "description": "There is no standalone \"Hero Compact\" component in Sitecore; add \"Hero Full or Compact\" first, then select Hero Compact in the Details pane and point the Source field to it.",
+          "importance": "critical"
+        },
+        {
+          "name": "Single media field",
+          "description": "The component only provides one field for a photo or video.",
+          "importance": "normal"
+        },
+        {
+          "name": "Copy pulled from parent page fields",
+          "description": "The hero text comes from the parent page's Page Title and Page Description fields, not from fields inside the component.",
+          "importance": "normal"
+        },
+        {
+          "name": "Character limits",
+          "description": "Title is limited to 100 characters and Body to 280 characters.",
+          "importance": "normal"
+        },
+        {
+          "name": "Recommended image size",
+          "description": "Recommended image size is 1500x1000 at 72 DPI.",
+          "importance": "normal"
+        }
+      ],
+      "screenshotAsset": "component-examples/hero-compact.png",
+      "sourceSites": [
+        "old",
+        "new"
+      ]
+    },
+    {
+      "name": "Hero Video Full",
+      "category": "Headers",
+      "purpose": "Use this hero to feature a special event or otherwise add movement to the top of a page. It is the approved hero-video option, and it is not for videos that need audio to make sense or for uploading video directly to the Sitecore Media Library.",
+      "fields": [
+        {
+          "name": "Page Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": "inherits from the parent page's field, not its own -- unconfirmed by the public catalog"
+        },
+        {
+          "name": "Page Description",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": "inherits from the parent page's field, not its own -- unconfirmed by the public catalog"
+        },
+        {
+          "name": "Image",
+          "fieldType": "image",
+          "constraints": "max 1 image(s), never confirmed as an exact requirement by the public catalog",
+          "notes": "alt text is populated via the Alt Text tool, not this pipeline"
+        }
+      ],
+      "examples": [
+        "A homepage hero with a looping campus event video and a fallback image.",
+        "A landing-page hero showing a short moving scene with no audio-dependent message."
+      ],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": true,
+      "visualVariant": "unspecified",
+      "specialFeatures": [
+        {
+          "name": "Vimeo Pro progressive video link",
+          "description": "The video must come from Vimeo, using a progressive link from a Vimeo Pro account.",
+          "importance": "critical"
+        },
+        {
+          "name": "Fallback image",
+          "description": "A fallback image must be added in case the video fails to load.",
+          "importance": "critical"
+        },
+        {
+          "name": "Built-in image gradient position",
+          "description": "The component includes a built-in image gradient, either on the bottom or the left, selected in the Details pane.",
+          "importance": "normal"
+        },
+        {
+          "name": "Source component",
+          "description": "In Sitecore, this component is added through the 'Hero Full or Compact' component and the Source field must point to that item.",
+          "importance": "normal"
+        }
+      ],
+      "screenshotAsset": "component-examples/hero-video-full.png",
+      "sourceSites": [
+        "old",
+        "new"
+      ]
+    },
+    {
+      "name": "Hero Image Full",
+      "category": "Headers",
+      "purpose": "Use this hero when a page needs a large, full-height image or video with the page title and description shown prominently. It is the main hero style on the site, and it is not the separate Hero Compact component; in Sitecore, Compact is also accessed through \"Hero Full or Compact.\"",
+      "fields": [
+        {
+          "name": "Page Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": "inherits from the parent page's field, not its own -- unconfirmed by the public catalog"
+        },
+        {
+          "name": "Page Description",
+          "fieldType": "plaintext",
+          "constraints": "197 char (from crawl notes)",
+          "notes": "inherits from the parent page's field, not its own -- unconfirmed by the public catalog"
+        },
+        {
+          "name": "Image",
+          "fieldType": "image",
+          "constraints": "max 1 image(s), never confirmed as an exact requirement by the public catalog",
+          "notes": "alt text is populated via the Alt Text tool, not this pipeline"
+        }
+      ],
+      "examples": [
+        "A landing page opening with a large campus photo and the page’s title and intro text.",
+        "A feature page using a full-width video hero above the main content."
+      ],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": true,
+      "visualVariant": "new_look",
+      "specialFeatures": [
+        {
+          "name": "Image source",
+          "description": "This component has a single content field for adding a photo or video; the title and description come from the parent page, not from the component itself.",
+          "importance": "normal"
+        },
+        {
+          "name": "Built-in image gradient",
+          "description": "A built-in gradient can be applied on the bottom or the left, and the editor selects the side in the Details pane.",
+          "importance": "normal"
+        },
+        {
+          "name": "Component setup",
+          "description": "To use it, add \"Hero Full or Compact\" in the Page Content folder and point the page's Source field to it; there is no standalone \"Hero Compact\" component in Sitecore.",
+          "importance": "normal"
+        }
+      ],
+      "screenshotAsset": "component-examples/hero-image-full.png",
+      "sourceSites": [
+        "old",
+        "new"
+      ]
+    },
+    {
+      "name": "Hero Landing",
+      "category": "Headers",
+      "purpose": "Use Hero Landing as the primary hero for landing pages when you need a large photo with eyebrow text, a title, body copy, and a link. It is not for video hero content.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Description",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Button",
+          "fieldType": "button",
+          "constraints": "max 1 button(s); allowed color(s) not confirmed by the public catalog",
+          "notes": ""
+        },
+        {
+          "name": "Image",
+          "fieldType": "image",
+          "constraints": "max 1 image(s), never confirmed as an exact requirement by the public catalog",
+          "notes": "alt text is populated via the Alt Text tool, not this pipeline"
+        }
+      ],
+      "examples": [],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "unspecified",
+      "specialFeatures": [
+        {
+          "name": "Image Gradient Position",
+          "description": "The built-in image gradient can be placed on either the bottom or the left, and that choice is made in the Details pane.",
+          "importance": "normal"
+        }
+      ],
+      "screenshotAsset": "component-examples/hero-landing.png",
+      "sourceSites": [
+        "old",
+        "new"
+      ]
+    },
+    {
+      "name": "Hero with Link",
+      "category": "Headers",
+      "purpose": "Use this hero at the top of a page when you want the page title and description to appear with a single image and one linked call to action. It is essentially the Hero Compact with a link, so it is not the choice when you need a hero without a link or with more than one link.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Description",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Link",
+          "fieldType": "link",
+          "constraints": "required, max not confirmed",
+          "notes": "link mode: required"
+        },
+        {
+          "name": "Image",
+          "fieldType": "image",
+          "constraints": "max 1 image(s), never confirmed as an exact requirement by the public catalog",
+          "notes": "alt text is populated via the Alt Text tool, not this pipeline"
+        }
+      ],
+      "examples": [
+        "A landing page hero with a campus image and a single button linking to an admissions page.",
+        "An article detail page hero that shows the page title, description, and one link to related information."
+      ],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "unspecified",
+      "specialFeatures": [
+        {
+          "name": "Single required link",
+          "description": "Only one link can be added, and it appears as an orange CTA button in the hero.",
+          "importance": "critical"
+        },
+        {
+          "name": "One image maximum",
+          "description": "The component accepts a single image.",
+          "importance": "normal"
+        },
+        {
+          "name": "Parent page copy",
+          "description": "The displayed copy comes from the parent page's Page Title and Page Description; you add the image and link in the component.",
+          "importance": "normal"
+        }
+      ],
+      "screenshotAsset": null,
+      "sourceSites": [
+        "old",
+        "new"
+      ]
+    },
+    {
+      "name": "History",
+      "category": "Page Content",
+      "purpose": "A date-organized timeline page content component used to present the history of UTA.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Description",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Image",
+          "fieldType": "image",
+          "constraints": "max 1 image(s), never confirmed as an exact requirement by the public catalog",
+          "notes": "alt text is populated via the Alt Text tool, not this pipeline"
+        },
+        {
+          "name": "Listing item",
+          "fieldType": "listing",
+          "constraints": "unlimited items",
+          "notes": "repeatable child item -- populated as one entry per item the section content actually contains, never padded to hit a cap"
+        }
+      ],
+      "examples": [],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "unspecified",
+      "specialFeatures": [
+        {
+          "name": "Rich Text",
+          "description": "Not supported.",
+          "importance": "normal"
+        },
+        {
+          "name": "Max # of Images",
+          "description": "Limited to 1 image.",
+          "importance": "normal"
+        },
+        {
+          "name": "Buttons",
+          "description": "Buttons are not supported.",
+          "importance": "normal"
+        },
+        {
+          "name": "Links",
+          "description": "No links are supported.",
+          "importance": "normal"
+        },
+        {
+          "name": "Listing",
+          "description": "Unlimited items can be listed.",
+          "importance": "normal"
+        }
+      ],
+      "screenshotAsset": "component-examples/history.png",
+      "sourceSites": [
+        "old"
+      ]
+    },
+    {
+      "name": "Horizontal Header Nav",
+      "category": "Template Elements",
+      "purpose": "Use this navigation template when a site needs a horizontal header navigation area that is included across pages. It can include an optional breadcrumb bar, and on a Detail Page it automatically shows side navigation in the left rail. It is not for images, buttons, listings, or rich text content.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Description",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Link",
+          "fieldType": "link",
+          "constraints": "optional, max not confirmed",
+          "notes": "link mode: optional"
+        }
+      ],
+      "examples": [
+        "A department site header with a row of navigation links and an optional breadcrumb trail below it.",
+        "A detail page that keeps the header navigation in place while showing the section’s side navigation in the left rail."
+      ],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "unspecified",
+      "specialFeatures": [
+        {
+          "name": "Optional breadcrumb bar",
+          "description": "The component can include a breadcrumb bar above or within the header navigation.",
+          "importance": "normal"
+        },
+        {
+          "name": "Detail page side navigation",
+          "description": "On a Detail Page, the component automatically displays the side navigation on the left rail.",
+          "importance": "normal"
+        }
+      ],
+      "screenshotAsset": "component-examples/horizontal-header-nav.png",
+      "sourceSites": [
+        "old"
+      ]
+    },
+    {
+      "name": "Horizontal Listings",
+      "category": "Page Content",
+      "purpose": "Use Horizontal Listings to present equally important information or departments in a horizontal list. It is not for rich text, images, or links, since those are not supported here.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Description",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Button",
+          "fieldType": "button",
+          "constraints": "max 1 button(s); allowed color(s) not confirmed by the public catalog",
+          "notes": ""
+        },
+        {
+          "name": "Listing item",
+          "fieldType": "listing",
+          "constraints": "unlimited items",
+          "notes": "repeatable child item -- populated as one entry per item the section content actually contains, never padded to hit a cap"
+        }
+      ],
+      "examples": [],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "unspecified",
+      "specialFeatures": [
+        {
+          "name": "Buttons",
+          "description": "Supports exactly 1 button.",
+          "importance": "normal"
+        },
+        {
+          "name": "Listing",
+          "description": "Unlimited listings are supported.",
+          "importance": "normal"
+        },
+        {
+          "name": "Rich Text",
+          "description": "Rich text is not supported.",
+          "importance": "normal"
+        },
+        {
+          "name": "Max # of Images",
+          "description": "Images are not supported.",
+          "importance": "normal"
+        },
+        {
+          "name": "Links",
+          "description": "Links are not supported.",
+          "importance": "normal"
+        }
+      ],
+      "screenshotAsset": "component-examples/horizontal-listings.png",
+      "sourceSites": [
+        "old"
+      ]
+    },
+    {
+      "name": "Image Carousel",
+      "category": "Headers",
+      "purpose": "Use this component to present a small carousel of images, ideally 3–4 items, with each image linked. It is not for button-based content, since buttons are not supported; the similar Lightbox component is a separate option.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Description",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Link",
+          "fieldType": "link",
+          "constraints": "required, max not confirmed",
+          "notes": "link mode: required"
+        },
+        {
+          "name": "Image (up to 4)",
+          "fieldType": "image",
+          "constraints": "max 4 image(s), never confirmed as an exact requirement by the public catalog",
+          "notes": "alt text is populated via the Alt Text tool, not this pipeline"
+        },
+        {
+          "name": "Listing item",
+          "fieldType": "listing",
+          "constraints": "unlimited items",
+          "notes": "repeatable child item -- populated as one entry per item the section content actually contains, never padded to hit a cap"
+        }
+      ],
+      "examples": [
+        "A banner-style image gallery with three linked campus photos.",
+        "A short rotating set of four linked illustrations for an article header."
+      ],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "classic_look",
+      "specialFeatures": [
+        {
+          "name": "Max # of Images",
+          "description": "Up to 4 images are supported.",
+          "importance": "normal"
+        },
+        {
+          "name": "Links Required",
+          "description": "Each image must include a link.",
+          "importance": "critical"
+        },
+        {
+          "name": "Buttons Not Supported",
+          "description": "Button elements cannot be used in this component.",
+          "importance": "normal"
+        },
+        {
+          "name": "Image Size",
+          "description": "Recommended image size is 1400x550 pixels.",
+          "importance": "normal"
+        }
+      ],
+      "screenshotAsset": null,
+      "sourceSites": [
+        "old"
+      ]
+    },
+    {
+      "name": "Info Block With Links",
+      "category": "Page Content",
+      "purpose": "Use this page content component to present a short info block with up to four links, optionally alongside up to two images. It is not for buttons or listing content, and it does not support rich text.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Description",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Link",
+          "fieldType": "link",
+          "constraints": "optional, max not confirmed",
+          "notes": "link mode: optional"
+        },
+        {
+          "name": "Image (up to 2)",
+          "fieldType": "image",
+          "constraints": "max 2 image(s), never confirmed as an exact requirement by the public catalog",
+          "notes": "alt text is populated via the Alt Text tool, not this pipeline"
+        }
+      ],
+      "examples": [
+        "A short announcement block with two related resource links and one small image.",
+        "A campus services block with four quick links to related pages."
+      ],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "classic_look",
+      "specialFeatures": [
+        {
+          "name": "Up to 4 links",
+          "description": "The component can contain no more than four links, and links are optional.",
+          "importance": "normal"
+        },
+        {
+          "name": "Maximum images",
+          "description": "Supports up to 2 images.",
+          "importance": "normal"
+        },
+        {
+          "name": "Buttons not supported",
+          "description": "This component does not support buttons.",
+          "importance": "normal"
+        },
+        {
+          "name": "Listing not supported",
+          "description": "This component does not support listing content.",
+          "importance": "normal"
+        }
+      ],
+      "screenshotAsset": "component-examples/info-block-with-links.png",
+      "sourceSites": [
+        "old"
+      ]
+    },
+    {
+      "name": "Info Cards",
+      "category": "Page Content",
+      "purpose": "Use Info Cards when you want to present a small set of card-based content with an infographic feel. It is described as showing cards with descriptions, typically in a three-card row with a background image and icons; it is not for rich-text-heavy content or link lists, since rich text and links are not supported.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Description",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Button",
+          "fieldType": "button",
+          "constraints": "max 1 button(s); allowed color(s) not confirmed by the public catalog",
+          "notes": ""
+        },
+        {
+          "name": "Image",
+          "fieldType": "image",
+          "constraints": "max 1 image(s), never confirmed as an exact requirement by the public catalog",
+          "notes": "alt text is populated via the Alt Text tool, not this pipeline"
+        },
+        {
+          "name": "Listing item",
+          "fieldType": "listing",
+          "constraints": "up to 6 item(s)",
+          "notes": "repeatable child item -- populated as one entry per item the section content actually contains, never padded to hit a cap"
+        }
+      ],
+      "examples": [
+        "A three-card section highlighting key student services, each card using a simple icon and a short description.",
+        "A small set of program feature cards with a background image and one ghost button on each card."
+      ],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "classic_look",
+      "specialFeatures": [
+        {
+          "name": "Max # of Images",
+          "description": "Only one image is supported.",
+          "importance": "normal"
+        },
+        {
+          "name": "Buttons",
+          "description": "One ghost button per card is supported.",
+          "importance": "normal"
+        },
+        {
+          "name": "Listing",
+          "description": "Limited to 6 items.",
+          "importance": "normal"
+        }
+      ],
+      "screenshotAsset": null,
+      "sourceSites": [
+        "old"
+      ]
+    },
+    {
+      "name": "Interior Nav",
+      "category": "Sidebars",
+      "purpose": "Use this component to place a left-rail set of department links that helps users navigate pages within that department. It is only intended for the Experience Interior Nav Page template, and it is not for rich text content, images, or buttons.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Description",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Link",
+          "fieldType": "link",
+          "constraints": "required, max not confirmed",
+          "notes": "link mode: required"
+        },
+        {
+          "name": "Listing item",
+          "fieldType": "listing",
+          "constraints": "unlimited items",
+          "notes": "repeatable child item -- populated as one entry per item the section content actually contains, never padded to hit a cap"
+        }
+      ],
+      "examples": [
+        "A left-side list of links to sections within a department page.",
+        "A departmental navigation rail with multiple page links for moving between related interior pages."
+      ],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "unspecified",
+      "specialFeatures": [
+        {
+          "name": "Experience Interior Nav Page template only",
+          "description": "Should only be used on the Experience Interior Nav Page template.",
+          "importance": "critical"
+        },
+        {
+          "name": "Links required",
+          "description": "This component requires links.",
+          "importance": "normal"
+        },
+        {
+          "name": "Unlimited listing",
+          "description": "The listing can contain an unlimited number of items.",
+          "importance": "normal"
+        },
+        {
+          "name": "Images not supported",
+          "description": "Images are not supported in this component.",
+          "importance": "normal"
+        },
+        {
+          "name": "Buttons not supported",
+          "description": "Buttons are not supported in this component.",
+          "importance": "normal"
+        },
+        {
+          "name": "Rich Text disabled",
+          "description": "Rich text is not supported.",
+          "importance": "normal"
+        }
+      ],
+      "screenshotAsset": "component-examples/interior-nav.png",
+      "sourceSites": [
+        "old"
+      ]
+    },
+    {
+      "name": "Left Image Content Block",
+      "category": "Page Content",
+      "purpose": "Use this component for a major callout on a page, with an image on the left and rich text content beside it. It is not meant for listings, and it does not support links.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Body",
+          "fieldType": "richtext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Button",
+          "fieldType": "button",
+          "constraints": "max 2 button(s); allowed color(s) not confirmed by the public catalog",
+          "notes": ""
+        },
+        {
+          "name": "Image",
+          "fieldType": "image",
+          "constraints": "max 1 image(s), never confirmed as an exact requirement by the public catalog",
+          "notes": "alt text is populated via the Alt Text tool, not this pipeline"
+        }
+      ],
+      "examples": [
+        "A highlighted announcement with a short paragraph and one button.",
+        "A featured program spotlight with one image, a brief description, and two buttons."
+      ],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "unspecified",
+      "specialFeatures": [
+        {
+          "name": "Background color",
+          "description": "Choose either a grey or blue background.",
+          "importance": "normal"
+        },
+        {
+          "name": "Max # of Images",
+          "description": "Supports up to 1 image.",
+          "importance": "normal"
+        },
+        {
+          "name": "Buttons",
+          "description": "Supports up to 2 buttons.",
+          "importance": "normal"
+        },
+        {
+          "name": "Character limit",
+          "description": "The character limit includes HTML tags.",
+          "importance": "normal"
+        }
+      ],
+      "screenshotAsset": null,
+      "sourceSites": [
+        "old"
+      ]
+    },
+    {
+      "name": "Left Image Vertical Listing",
+      "category": "Page Content",
+      "purpose": "Use this component to present short listings that combine an image with supporting text and links, such as unit highlights or a staff directory. It is not for the highlighted/new-look variant if you need to mix it with classic-look components.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Description",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Button",
+          "fieldType": "button",
+          "constraints": "max 1 button(s); allowed color(s) not confirmed by the public catalog",
+          "notes": ""
+        },
+        {
+          "name": "Image",
+          "fieldType": "image",
+          "constraints": "max 1 image(s), never confirmed as an exact requirement by the public catalog",
+          "notes": "alt text is populated via the Alt Text tool, not this pipeline"
+        },
+        {
+          "name": "Listing item",
+          "fieldType": "listing",
+          "constraints": "unlimited items",
+          "notes": "repeatable child item -- populated as one entry per item the section content actually contains, never padded to hit a cap"
+        }
+      ],
+      "examples": [
+        "A set of unit spotlight entries with a photo, brief description, and one or two links for each item.",
+        "A staff directory-style listing with each person’s image and a short role summary."
+      ],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "unspecified",
+      "specialFeatures": [
+        {
+          "name": "List Size",
+          "description": "Controls how many Vertical Listing Items display. This field is described as the MOST IMPORTANT setting and should be set correctly so all intended information appears.",
+          "importance": "critical"
+        },
+        {
+          "name": "Alternate Sides",
+          "description": "Alternates the image position from left to right between listing items, starting with the first item on the left.",
+          "importance": "normal"
+        },
+        {
+          "name": "Description Character Limit",
+          "description": "Sets a maximum length for the Description field and truncates the text with ellipses when the limit is reached.",
+          "importance": "normal"
+        },
+        {
+          "name": "Highlighted Variant",
+          "description": "Uses the new-look component layout. Do not use it with classic-look components.",
+          "importance": "normal"
+        }
+      ],
+      "screenshotAsset": "component-examples/left-image-vertical-listing.png",
+      "sourceSites": [
+        "old",
+        "new"
+      ]
+    },
+    {
+      "name": "Lightbox",
+      "category": "Page Content",
+      "purpose": "Lightbox is a page-content component used in the article detail, detail page, experience landing with nav, and experience right rail page templates to present a small image set. It is not for rich text, buttons, or links, and the similar Image Carousel component is listed separately.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Description",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Image (up to 4)",
+          "fieldType": "image",
+          "constraints": "max 4 image(s), never confirmed as an exact requirement by the public catalog",
+          "notes": "alt text is populated via the Alt Text tool, not this pipeline"
+        },
+        {
+          "name": "Listing item",
+          "fieldType": "listing",
+          "constraints": "unlimited items",
+          "notes": "repeatable child item -- populated as one entry per item the section content actually contains, never padded to hit a cap"
+        }
+      ],
+      "examples": [],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "unspecified",
+      "specialFeatures": [
+        {
+          "name": "Max # of Images",
+          "description": "Up to 4 images can be included.",
+          "importance": "normal"
+        },
+        {
+          "name": "Image Sizes",
+          "description": "Supported image sizes are 780x585 pixels and 585x780 pixels.",
+          "importance": "normal"
+        },
+        {
+          "name": "Buttons",
+          "description": "Buttons are not supported.",
+          "importance": "normal"
+        },
+        {
+          "name": "Links",
+          "description": "No links are supported.",
+          "importance": "normal"
+        },
+        {
+          "name": "Listing",
+          "description": "Unlimited.",
+          "importance": "normal"
+        }
+      ],
+      "screenshotAsset": null,
+      "sourceSites": [
+        "old"
+      ]
+    },
+    {
+      "name": "News Listing",
+      "category": "News",
+      "purpose": "Use this component to present a short news listing pulled from Article Detail pages, with up to six stories shown. It can pull from any news folder, not just university news releases.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Description",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Link",
+          "fieldType": "link",
+          "constraints": "required, max not confirmed",
+          "notes": "link mode: required"
+        },
+        {
+          "name": "Image",
+          "fieldType": "image",
+          "constraints": "max 1 image(s), never confirmed as an exact requirement by the public catalog",
+          "notes": "alt text is populated via the Alt Text tool, not this pipeline"
+        },
+        {
+          "name": "Listing item",
+          "fieldType": "listing",
+          "constraints": "up to 6 item(s)",
+          "notes": "repeatable child item -- populated as one entry per item the section content actually contains, never padded to hit a cap"
+        }
+      ],
+      "examples": [],
+      "dynamic": true,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "unspecified",
+      "specialFeatures": [
+        {
+          "name": "Listing limit",
+          "description": "The listing is limited to 6 items.",
+          "importance": "normal"
+        },
+        {
+          "name": "Source content",
+          "description": "Can pull from any news folder, not only university news releases.",
+          "importance": "normal"
+        },
+        {
+          "name": "Links required",
+          "description": "Links are required for this component.",
+          "importance": "normal"
+        },
+        {
+          "name": "Buttons not supported",
+          "description": "Buttons are not supported.",
+          "importance": "normal"
+        },
+        {
+          "name": "Max images",
+          "description": "Only 1 image is supported.",
+          "importance": "normal"
+        }
+      ],
+      "screenshotAsset": null,
+      "sourceSites": [
+        "old"
+      ]
+    },
+    {
+      "name": "Prefooter",
+      "category": "Template Elements",
+      "purpose": "Use Prefooter to add a lower-page area with rich text and links, often for contact information such as an address or phone number. It can also hold social media links with icons, and the links can be divided into sections under separate folders. It is not for images, buttons, or listings.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Body",
+          "fieldType": "richtext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Link",
+          "fieldType": "link",
+          "constraints": "optional, max not confirmed",
+          "notes": "link mode: optional"
+        }
+      ],
+      "examples": [
+        "A short contact block with a mailing address, phone number, and email link.",
+        "A prefooter with grouped resource links and social media icon links."
+      ],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "classic_look",
+      "specialFeatures": [
+        {
+          "name": "Sectioned link folders",
+          "description": "Links can be divided into sections and added as separate folders under the prefooter component.",
+          "importance": "normal"
+        },
+        {
+          "name": "Social media links with icons",
+          "description": "The component supports social media links displayed with icons.",
+          "importance": "normal"
+        },
+        {
+          "name": "Rich text",
+          "description": "Rich text is supported in the component.",
+          "importance": "normal"
+        },
+        {
+          "name": "Links optional",
+          "description": "Links do not have to be included.",
+          "importance": "normal"
+        }
+      ],
+      "screenshotAsset": null,
+      "sourceSites": [
+        "old"
+      ]
+    },
+    {
+      "name": "Profile Cards",
+      "category": "Page Content",
+      "purpose": "Use Profile Cards for a page-content card that presents a profile-style item with one small image and optional linking. It is not for listing content, and buttons are not supported.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Description",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Link",
+          "fieldType": "link",
+          "constraints": "optional, max not confirmed",
+          "notes": "link mode: optional"
+        },
+        {
+          "name": "Image",
+          "fieldType": "image",
+          "constraints": "max 1 image(s), never confirmed as an exact requirement by the public catalog",
+          "notes": "alt text is populated via the Alt Text tool, not this pipeline"
+        }
+      ],
+      "examples": [
+        "A faculty profile card with a headshot and a linked name.",
+        "A staff highlight card with a short text blurb and one optional link."
+      ],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "unspecified",
+      "specialFeatures": [
+        {
+          "name": "Max # of Images",
+          "description": "Allows only 1 image.",
+          "importance": "normal"
+        },
+        {
+          "name": "Image Size",
+          "description": "Image should be 100x100 pixels.",
+          "importance": "normal"
+        },
+        {
+          "name": "Buttons",
+          "description": "Buttons are not supported.",
+          "importance": "normal"
+        },
+        {
+          "name": "Links",
+          "description": "Links are optional.",
+          "importance": "normal"
+        },
+        {
+          "name": "Listing",
+          "description": "Listing is not supported.",
+          "importance": "normal"
+        },
+        {
+          "name": "Rich Text",
+          "description": "Rich text is not supported.",
+          "importance": "normal"
+        }
+      ],
+      "screenshotAsset": null,
+      "sourceSites": [
+        "old"
+      ]
+    },
+    {
+      "name": "Quote Cards",
+      "category": "Page Content",
+      "purpose": "Use this component to highlight a quote or testimonial. It is not meant for content that depends on images or rich text formatting.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Description",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Button",
+          "fieldType": "button",
+          "constraints": "max 1 button(s); allowed color(s) not confirmed by the public catalog",
+          "notes": ""
+        },
+        {
+          "name": "Link",
+          "fieldType": "link",
+          "constraints": "optional, max not confirmed",
+          "notes": "link mode: unspecified"
+        }
+      ],
+      "examples": [
+        "A short student testimonial pulled out in a sidebar.",
+        "A faculty quote displayed on a landing page."
+      ],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "unspecified",
+      "specialFeatures": [
+        {
+          "name": "Buttons",
+          "description": "Includes room for 1 button.",
+          "importance": "normal"
+        }
+      ],
+      "screenshotAsset": null,
+      "sourceSites": [
+        "old"
+      ]
+    },
+    {
+      "name": "Random Story Card",
+      "category": "Page Content",
+      "purpose": "Use this component when you want one selected story to appear at random each time the page loads. It is meant for stories from Article Detail pages in the /stories folder, not for pulling story content from elsewhere or for a general-purpose story list.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Description",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Button",
+          "fieldType": "button",
+          "constraints": "max 2 button(s); allowed color(s) not confirmed by the public catalog",
+          "notes": ""
+        },
+        {
+          "name": "Image",
+          "fieldType": "image",
+          "constraints": "max 1 image(s), never confirmed as an exact requirement by the public catalog",
+          "notes": "alt text is populated via the Alt Text tool, not this pipeline"
+        },
+        {
+          "name": "Listing item",
+          "fieldType": "listing",
+          "constraints": "unlimited items",
+          "notes": "repeatable child item -- populated as one entry per item the section content actually contains, never padded to hit a cap"
+        }
+      ],
+      "examples": [
+        "A homepage rail feature that shows one different student story on each refresh.",
+        "A detail-page sidebar module that surfaces one featured article from the /stories collection."
+      ],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "unspecified",
+      "specialFeatures": [
+        {
+          "name": "Background Theme",
+          "description": "Can be set on either a light or dark background.",
+          "importance": "normal"
+        },
+        {
+          "name": "Image Position",
+          "description": "The image can be placed on the left or the right.",
+          "importance": "normal"
+        },
+        {
+          "name": "Source Restriction",
+          "description": "Only pulls stories from an Article Detail page inside a folder called /stories.",
+          "importance": "normal"
+        },
+        {
+          "name": "Max # of Images",
+          "description": "Limited to 1 image.",
+          "importance": "normal"
+        },
+        {
+          "name": "Buttons",
+          "description": "Supports up to 2 buttons.",
+          "importance": "normal"
+        },
+        {
+          "name": "Links",
+          "description": "No links are supported.",
+          "importance": "normal"
+        },
+        {
+          "name": "Listing",
+          "description": "Unlimited stories can be selected for random display.",
+          "importance": "normal"
+        }
+      ],
+      "screenshotAsset": null,
+      "sourceSites": [
+        "old"
+      ]
+    },
+    {
+      "name": "Related Links",
+      "category": "Page Content",
+      "purpose": "Use Related Links when you need to add a set of related links to a page. It is not for images or buttons, which are not supported, and it does not support a listing.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Description",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Link",
+          "fieldType": "link",
+          "constraints": "required, max not confirmed",
+          "notes": "link mode: required"
+        }
+      ],
+      "examples": [
+        "A short set of links to related academic resources or policies.",
+        "A few navigation links to other pages connected to the current article or landing page."
+      ],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "classic_look",
+      "specialFeatures": [
+        {
+          "name": "Links",
+          "description": "Links are required.",
+          "importance": "critical"
+        }
+      ],
+      "screenshotAsset": null,
+      "sourceSites": [
+        "old"
+      ]
+    },
+    {
+      "name": "Rich Text",
+      "category": "Page Content",
+      "purpose": "Use Rich Text for page content that is meant to be presented as text. It is not for images, buttons, links, or listing-style content, since those are not supported.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Body",
+          "fieldType": "richtext",
+          "constraints": "not confirmed",
+          "notes": ""
+        }
+      ],
+      "examples": [
+        "A short introductory paragraph describing a department or program.",
+        "Several paragraphs of informational copy about office hours, policies, or contact details."
+      ],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "unspecified",
+      "specialFeatures": [],
+      "screenshotAsset": "component-examples/rich-text.png",
+      "sourceSites": [
+        "old"
+      ]
+    },
+    {
+      "name": "Rich Text Tab Content",
+      "category": "Page Content",
+      "purpose": "Use this component for a rich-text content block in the main content area, including the Article Detail Page and the Experience Right Rail Page. It is not for content that needs images, buttons, or links, since those are not supported.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Body",
+          "fieldType": "richtext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Listing item",
+          "fieldType": "listing",
+          "constraints": "unlimited items",
+          "notes": "repeatable child item -- populated as one entry per item the section content actually contains, never padded to hit a cap"
+        }
+      ],
+      "examples": [
+        "A short article summary followed by a few paragraphs of body copy.",
+        "A rail-side informational text block with a long list of resources or notes."
+      ],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "unspecified",
+      "specialFeatures": [
+        {
+          "name": "Images",
+          "description": "Images are not supported.",
+          "importance": "normal"
+        },
+        {
+          "name": "Buttons",
+          "description": "Buttons are not supported.",
+          "importance": "normal"
+        },
+        {
+          "name": "Links",
+          "description": "Links are not supported.",
+          "importance": "normal"
+        },
+        {
+          "name": "Listing",
+          "description": "Unlimited listing items are supported.",
+          "importance": "normal"
+        }
+      ],
+      "screenshotAsset": "component-examples/rich-text-tab-content.png",
+      "sourceSites": [
+        "old"
+      ]
+    },
+    {
+      "name": "Right Dual Image Block",
+      "category": "Page Content",
+      "purpose": "Use this component for page content that pairs rich text with up to two images and optional links. It is not for buttons, and it does not support listings.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Body",
+          "fieldType": "richtext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Link",
+          "fieldType": "link",
+          "constraints": "optional, max not confirmed",
+          "notes": "link mode: optional"
+        },
+        {
+          "name": "Image (up to 2)",
+          "fieldType": "image",
+          "constraints": "max 2 image(s), never confirmed as an exact requirement by the public catalog",
+          "notes": "alt text is populated via the Alt Text tool, not this pipeline"
+        }
+      ],
+      "examples": [
+        "A short article section with a paragraph of text and two related images placed alongside it.",
+        "A content block with a brief description and one or two linked images pointing to related pages."
+      ],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "unspecified",
+      "specialFeatures": [
+        {
+          "name": "Image Size",
+          "description": "Images should be 400x400 pixels.",
+          "importance": "normal"
+        },
+        {
+          "name": "Max # of Images",
+          "description": "Up to 2 images are supported.",
+          "importance": "normal"
+        },
+        {
+          "name": "Buttons",
+          "description": "Buttons are not supported.",
+          "importance": "normal"
+        }
+      ],
+      "screenshotAsset": null,
+      "sourceSites": [
+        "old"
+      ]
+    },
+    {
+      "name": "Right Rail Link List",
+      "category": "Sidebars",
+      "purpose": "Use this component for a right-rail sidebar list of links on pages that provide a right-rail placeholder, such as article detail and experience pages. It is for links only; images and buttons are not supported.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Description",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Link",
+          "fieldType": "link",
+          "constraints": "required, max not confirmed",
+          "notes": "link mode: required"
+        },
+        {
+          "name": "Listing item",
+          "fieldType": "listing",
+          "constraints": "unlimited items",
+          "notes": "repeatable child item -- populated as one entry per item the section content actually contains, never padded to hit a cap"
+        }
+      ],
+      "examples": [
+        "A short list of related department links in the right rail of an article detail page.",
+        "A set of quick links for an experience page sidebar."
+      ],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "classic_look",
+      "specialFeatures": [
+        {
+          "name": "Links required",
+          "description": "This component must include links.",
+          "importance": "critical"
+        },
+        {
+          "name": "Listing",
+          "description": "Unlimited number of links can be included.",
+          "importance": "normal"
+        },
+        {
+          "name": "Max # of Images",
+          "description": "Images are not supported.",
+          "importance": "normal"
+        },
+        {
+          "name": "Buttons",
+          "description": "Buttons are not supported.",
+          "importance": "normal"
+        }
+      ],
+      "screenshotAsset": "component-examples/right-rail-link-list.png",
+      "sourceSites": [
+        "old"
+      ]
+    },
+    {
+      "name": "Right Rail Listing Items",
+      "category": "Sidebars",
+      "purpose": "Use this sidebar component for a right-rail listing area on pages that provide a right-rail placeholder, such as article detail or right-rail page templates. It is for listing content only, not for rich text, images, buttons, or links.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Description",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Listing item",
+          "fieldType": "listing",
+          "constraints": "unlimited items",
+          "notes": "repeatable child item -- populated as one entry per item the section content actually contains, never padded to hit a cap"
+        }
+      ],
+      "examples": [
+        "A short list of related items in the right rail of an article detail page.",
+        "A sidebar list of navigation or resource items on a page with a right-rail area."
+      ],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "unspecified",
+      "specialFeatures": [
+        {
+          "name": "Listing",
+          "description": "Unlimited number of listing items.",
+          "importance": "normal"
+        }
+      ],
+      "screenshotAsset": "component-examples/right-rail-listing-items.png",
+      "sourceSites": [
+        "old"
+      ]
+    },
+    {
+      "name": "Short Feature Content Combo",
+      "category": "Page Content",
+      "purpose": "Editors use this for a short feature-style content block in hero-content or full-width areas on article detail, experience landing, detail page, and section landing templates. It is not for listings, and it does not support rich text or links.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Description",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Button",
+          "fieldType": "button",
+          "constraints": "max 1 button(s); allowed color(s) not confirmed by the public catalog",
+          "notes": ""
+        },
+        {
+          "name": "Image (up to 2)",
+          "fieldType": "image",
+          "constraints": "max 2 image(s), never confirmed as an exact requirement by the public catalog",
+          "notes": "alt text is populated via the Alt Text tool, not this pipeline"
+        }
+      ],
+      "examples": [
+        "A feature block with two supporting images and a single call-to-action button for a landing page hero area.",
+        "A brief promotional panel on a detail page with one image and no body text or links."
+      ],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "unspecified",
+      "specialFeatures": [
+        {
+          "name": "Max # of Images",
+          "description": "Supports up to 2 images.",
+          "importance": "normal"
+        },
+        {
+          "name": "Buttons",
+          "description": "Allows 1 button.",
+          "importance": "normal"
+        },
+        {
+          "name": "Rich Text",
+          "description": "Rich text is not supported.",
+          "importance": "normal"
+        },
+        {
+          "name": "Links",
+          "description": "Links are not supported.",
+          "importance": "normal"
+        },
+        {
+          "name": "Listing",
+          "description": "Listing is not supported.",
+          "importance": "normal"
+        }
+      ],
+      "screenshotAsset": null,
+      "sourceSites": [
+        "old"
+      ]
+    },
+    {
+      "name": "Story Card",
+      "category": "Page Content",
+      "purpose": "Use this component to feature one curated story pulled from an Article Detail page in the /stories folder when an editor wants a content-driven story card. It is not for Random Story Card behavior, multiple stories, or stories that live outside /stories.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Description",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Button",
+          "fieldType": "button",
+          "constraints": "max 2 button(s); allowed color(s) not confirmed by the public catalog",
+          "notes": ""
+        },
+        {
+          "name": "Image",
+          "fieldType": "image",
+          "constraints": "max 1 image(s), never confirmed as an exact requirement by the public catalog",
+          "notes": "alt text is populated via the Alt Text tool, not this pipeline"
+        },
+        {
+          "name": "Listing item",
+          "fieldType": "listing",
+          "constraints": "unlimited items",
+          "notes": "repeatable child item -- populated as one entry per item the section content actually contains, never padded to hit a cap"
+        }
+      ],
+      "examples": [
+        "A featured story card promoting a single article about campus research.",
+        "A homepage story tile highlighting one news-style article from the /stories area."
+      ],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "classic_look",
+      "specialFeatures": [
+        {
+          "name": "Single story selection",
+          "description": "Only one story can be selected, unlike the Random Story Card.",
+          "importance": "normal"
+        },
+        {
+          "name": "Story source restriction",
+          "description": "Only pulls stories from an Article Detail page inside the /stories folder.",
+          "importance": "normal"
+        },
+        {
+          "name": "Max # of Images",
+          "description": "1 image maximum.",
+          "importance": "normal"
+        },
+        {
+          "name": "Buttons",
+          "description": "2 buttons.",
+          "importance": "normal"
+        },
+        {
+          "name": "Links",
+          "description": "No links are used.",
+          "importance": "normal"
+        },
+        {
+          "name": "Listing",
+          "description": "Unlimited listing.",
+          "importance": "normal"
+        }
+      ],
+      "screenshotAsset": null,
+      "sourceSites": [
+        "old"
+      ]
+    },
+    {
+      "name": "Story Carrier",
+      "category": "Page Content",
+      "purpose": "Use Story Carrier to list story items, each with an image, a short description, and an optional link to the page containing the story. It is not for button-based content, since buttons are not supported.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Description",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Link",
+          "fieldType": "link",
+          "constraints": "optional, max not confirmed",
+          "notes": "link mode: optional"
+        },
+        {
+          "name": "Image",
+          "fieldType": "image",
+          "constraints": "max 1 image(s), never confirmed as an exact requirement by the public catalog",
+          "notes": "alt text is populated via the Alt Text tool, not this pipeline"
+        },
+        {
+          "name": "Listing item",
+          "fieldType": "listing",
+          "constraints": "unlimited items",
+          "notes": "repeatable child item -- populated as one entry per item the section content actually contains, never padded to hit a cap"
+        }
+      ],
+      "examples": [],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "classic_look",
+      "specialFeatures": [
+        {
+          "name": "Image Size",
+          "description": "Images are sized at 320x660 pixels.",
+          "importance": "normal"
+        },
+        {
+          "name": "Max # of Images",
+          "description": "Only 1 image is supported.",
+          "importance": "normal"
+        },
+        {
+          "name": "Links",
+          "description": "Links are optional.",
+          "importance": "normal"
+        },
+        {
+          "name": "Listing",
+          "description": "The listing is unlimited.",
+          "importance": "normal"
+        },
+        {
+          "name": "Buttons",
+          "description": "Buttons are not supported.",
+          "importance": "normal"
+        }
+      ],
+      "screenshotAsset": null,
+      "sourceSites": [
+        "old"
+      ]
+    },
+    {
+      "name": "Subject Carousel",
+      "category": "Page Content",
+      "purpose": "Use this component for a horizontal tabbed subject display where each tab combines one background image with a title, description, and two buttons. It is not for rich-text content or link-only content, and the listing is limited to a small set of items.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Description",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Button",
+          "fieldType": "button",
+          "constraints": "max 2 button(s); allowed color(s) not confirmed by the public catalog",
+          "notes": ""
+        },
+        {
+          "name": "Image",
+          "fieldType": "image",
+          "constraints": "max 1 image(s), never confirmed as an exact requirement by the public catalog",
+          "notes": "alt text is populated via the Alt Text tool, not this pipeline"
+        },
+        {
+          "name": "Listing item",
+          "fieldType": "listing",
+          "constraints": "up to 4 item(s)",
+          "notes": "repeatable child item -- populated as one entry per item the section content actually contains, never padded to hit a cap"
+        }
+      ],
+      "examples": [
+        "A set of campus topics with a hero image, short summary, and two action buttons on each tab.",
+        "A department overview section with up to four subject tabs, each introducing a different area of study."
+      ],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "unspecified",
+      "specialFeatures": [
+        {
+          "name": "Listing limit",
+          "description": "Limited to 4 items.",
+          "importance": "normal"
+        },
+        {
+          "name": "Background image count",
+          "description": "Each tab supports 1 background image.",
+          "importance": "normal"
+        },
+        {
+          "name": "Button count",
+          "description": "Each tab supports 2 buttons.",
+          "importance": "normal"
+        },
+        {
+          "name": "Image size",
+          "description": "Recommended image size is 1400x550 pixels.",
+          "importance": "normal"
+        }
+      ],
+      "screenshotAsset": null,
+      "sourceSites": [
+        "old"
+      ]
+    },
+    {
+      "name": "Three Block Group",
+      "category": "Page Content",
+      "purpose": "Use this component for page content that is split into three parts: a main block with an introductory sentence and, if needed, one button, plus two action blocks beneath it. It is not for image-heavy content, since images are not supported except for a background.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Description",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Button",
+          "fieldType": "button",
+          "constraints": "max 1 button(s); allowed color(s) not confirmed by the public catalog",
+          "notes": ""
+        },
+        {
+          "name": "Link",
+          "fieldType": "link",
+          "constraints": "optional, max not confirmed",
+          "notes": "link mode: optional"
+        }
+      ],
+      "examples": [
+        "A short introduction to a program area with one call-to-action button and two linked action items below it.",
+        "A brief announcement with a main message and two supporting action blocks that each point to related pages."
+      ],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "classic_look",
+      "specialFeatures": [
+        {
+          "name": "Character Limits",
+          "description": "Main block: 99 characters; action blocks: 148 characters.",
+          "importance": "normal"
+        },
+        {
+          "name": "Button Count",
+          "description": "The main block supports 1 button.",
+          "importance": "normal"
+        },
+        {
+          "name": "Links",
+          "description": "Links are optional, and the action blocks can contain up to 3 links.",
+          "importance": "normal"
+        },
+        {
+          "name": "Images",
+          "description": "Images are not supported.",
+          "importance": "normal"
+        }
+      ],
+      "screenshotAsset": "component-examples/three-block-group.png",
+      "sourceSites": [
+        "old"
+      ]
+    },
+    {
+      "name": "Two Column CTA",
+      "category": "Page Content",
+      "purpose": "An editor would use this component for repetitive groups of related content arranged in two columns, such as scholarships or student organizations. It supports rich text and a single button, and it is not meant for image-based content or listings.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Body",
+          "fieldType": "richtext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Button",
+          "fieldType": "button",
+          "constraints": "max 1 button(s); allowed color(s) not confirmed by the public catalog",
+          "notes": ""
+        },
+        {
+          "name": "Link",
+          "fieldType": "link",
+          "constraints": "optional, max not confirmed",
+          "notes": "link mode: unspecified"
+        }
+      ],
+      "examples": [
+        "A page section introducing two related scholarships with a short description and one call-to-action button.",
+        "A student organizations landing section with brief text for two groups and a single link button on each side."
+      ],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "unspecified",
+      "specialFeatures": [
+        {
+          "name": "Rich Text",
+          "description": "Supported.",
+          "importance": "normal"
+        },
+        {
+          "name": "Buttons",
+          "description": "One button is supported.",
+          "importance": "normal"
+        },
+        {
+          "name": "Images",
+          "description": "Not supported.",
+          "importance": "normal"
+        },
+        {
+          "name": "Listing",
+          "description": "Not supported.",
+          "importance": "normal"
+        },
+        {
+          "name": "Placeholders",
+          "description": "Two content areas are provided: left content and right content.",
+          "importance": "normal"
+        }
+      ],
+      "screenshotAsset": "component-examples/two-column-cta.png",
+      "sourceSites": [
+        "old"
+      ]
+    },
+    {
+      "name": "Two Content Block",
+      "category": "Page Content",
+      "purpose": "Used for content that can be presented in two parts. It appears to be a simple content block rather than a listing or multi-block layout, so it is not for the separate Three Block Group or Horizontal Listings components.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Body",
+          "fieldType": "richtext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Button",
+          "fieldType": "button",
+          "constraints": "max 1 button(s); allowed color(s) not confirmed by the public catalog",
+          "notes": ""
+        }
+      ],
+      "examples": [
+        "A page section introducing graduate scholarships in one part and undergraduate scholarships in the other.",
+        "Two related informational sections that need to sit together on an article detail page."
+      ],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "classic_look",
+      "specialFeatures": [
+        {
+          "name": "Rich Text",
+          "description": "Supported.",
+          "importance": "normal"
+        },
+        {
+          "name": "Buttons",
+          "description": "Allows 1 button.",
+          "importance": "normal"
+        },
+        {
+          "name": "Images",
+          "description": "Not supported.",
+          "importance": "normal"
+        },
+        {
+          "name": "Links",
+          "description": "No links supported.",
+          "importance": "normal"
+        },
+        {
+          "name": "Listing",
+          "description": "Not supported.",
+          "importance": "normal"
+        }
+      ],
+      "screenshotAsset": "component-examples/two-content-block.png",
+      "sourceSites": [
+        "old"
+      ]
+    },
+    {
+      "name": "Vertical Subject Carousel",
+      "category": "Page Content",
+      "purpose": "Use this component to group similar information in a compact space. The documentation warns to use it carefully because on mobile a user may miss the tab selector; it is a related option to the similar rich text tab content, subject carousel, and component subject carousel components rather than a different content type.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Description",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Button",
+          "fieldType": "button",
+          "constraints": "max 2 button(s); allowed color(s) not confirmed by the public catalog",
+          "notes": ""
+        },
+        {
+          "name": "Image",
+          "fieldType": "image",
+          "constraints": "max 1 image(s), never confirmed as an exact requirement by the public catalog",
+          "notes": "alt text is populated via the Alt Text tool, not this pipeline"
+        },
+        {
+          "name": "Listing item",
+          "fieldType": "listing",
+          "constraints": "unlimited items",
+          "notes": "repeatable child item -- populated as one entry per item the section content actually contains, never padded to hit a cap"
+        }
+      ],
+      "examples": [
+        "A set of department overviews organized into tabs within a narrow rail area.",
+        "Several related resource groups presented in a compact vertical tab layout."
+      ],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "unspecified",
+      "specialFeatures": [
+        {
+          "name": "Max # of Images",
+          "description": "Allows only 1 image.",
+          "importance": "normal"
+        },
+        {
+          "name": "Buttons",
+          "description": "Allows 2 buttons.",
+          "importance": "normal"
+        },
+        {
+          "name": "Links",
+          "description": "No links are allowed.",
+          "importance": "normal"
+        },
+        {
+          "name": "Listing",
+          "description": "Unlimited listing items are allowed.",
+          "importance": "normal"
+        },
+        {
+          "name": "Mobile tab selector caution",
+          "description": "The documentation cautions that on mobile a user may miss the tab selector.",
+          "importance": "normal"
+        }
+      ],
+      "screenshotAsset": null,
+      "sourceSites": [
+        "old"
+      ]
+    },
+    {
+      "name": "Video Embed",
+      "category": "Page Content",
+      "purpose": "Use this component to embed a YouTube video on a page. It includes Headline and Short Description fields above the player, and it can be used either for a single video or for a variation that shows up to six videos in one component.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Description",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        }
+      ],
+      "examples": [
+        "A page section with a brief headline, a one-sentence summary, and an embedded YouTube interview video.",
+        "A content block that presents several related YouTube clips together in one video area."
+      ],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "unspecified",
+      "specialFeatures": [
+        {
+          "name": "Headline and Short Description fields",
+          "description": "Text fields appear above the embedded player.",
+          "importance": "normal"
+        },
+        {
+          "name": "Single-video or multi-video variation",
+          "description": "You can embed one video, or use a variation that allows up to six videos in one component.",
+          "importance": "normal"
+        }
+      ],
+      "screenshotAsset": null,
+      "sourceSites": [
+        "old"
+      ]
+    },
+    {
+      "name": "Circle Top Profile Card",
+      "category": "Page Content",
+      "purpose": "Editors use this to add a single profile-style card with a circular image at the top, short text, and an optional link. It is the individual card item, not the parent Circle Top Profile Card Listing container.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Description",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Button",
+          "fieldType": "button",
+          "constraints": "max 1 button(s); allowed color(s) not confirmed by the public catalog",
+          "notes": ""
+        },
+        {
+          "name": "Link",
+          "fieldType": "link",
+          "constraints": "optional, max not confirmed",
+          "notes": "link mode: optional"
+        },
+        {
+          "name": "Image",
+          "fieldType": "image",
+          "constraints": "max 1 image(s), never confirmed as an exact requirement by the public catalog",
+          "notes": "alt text is populated via the Alt Text tool, not this pipeline"
+        }
+      ],
+      "examples": [],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "unspecified",
+      "specialFeatures": [
+        {
+          "name": "Parent component listing",
+          "description": "This component is added under the Circle Top Profile Card Listing parent component.",
+          "importance": "normal"
+        },
+        {
+          "name": "Editor-defined order",
+          "description": "The order of cards in the Content Editor determines the order they appear on the live site.",
+          "importance": "normal"
+        },
+        {
+          "name": "Color option in parent component",
+          "description": "A blue and a dark gray option are available in the parent component.",
+          "importance": "normal"
+        }
+      ],
+      "screenshotAsset": "component-examples/circle-top-profile-card.png",
+      "sourceSites": [
+        "new"
+      ]
+    },
+    {
+      "name": "Event Countdown",
+      "category": "Page Content",
+      "purpose": "Use this component when you need to count down to a user-specified date and time, then replace the countdown with a user-specified message after the time has passed. It also supports a title, body copy, and a link, and the text describes full/compact display modes plus a light/dark styling option.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Description",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Button",
+          "fieldType": "button",
+          "constraints": "max 1 button(s); allowed color(s) not confirmed by the public catalog",
+          "notes": ""
+        },
+        {
+          "name": "Link",
+          "fieldType": "link",
+          "constraints": "optional, max not confirmed",
+          "notes": "link mode: optional"
+        }
+      ],
+      "examples": [],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "unspecified",
+      "specialFeatures": [
+        {
+          "name": "Full mode / Compact mode",
+          "description": "Selected in the main content screen; switches the countdown between boxed presentation and an uncontained version with an underline.",
+          "importance": "normal"
+        },
+        {
+          "name": "Light/Dark",
+          "description": "Selected in the Page Details pane; switches the background colors between dark blue and light.",
+          "importance": "normal"
+        },
+        {
+          "name": "Light Mode",
+          "description": "A special note says this option is available and would require an image with a blue gradient overlay.",
+          "importance": "normal"
+        }
+      ],
+      "screenshotAsset": "component-examples/event-countdown.png",
+      "sourceSites": [
+        "new"
+      ]
+    },
+    {
+      "name": "Featured Topic Listing",
+      "category": "News",
+      "purpose": "Use this component when you want the page to automatically surface news stories from a selected folder, filtered by a chosen Topic, in a featured layout of three cards and two pseudo-right-rail items. It also supports a link for sending users to more information or additional news stories.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Description",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Link",
+          "fieldType": "link",
+          "constraints": "optional, max not confirmed",
+          "notes": "link mode: optional"
+        },
+        {
+          "name": "Image",
+          "fieldType": "image",
+          "constraints": "max 1 image(s), never confirmed as an exact requirement by the public catalog",
+          "notes": "alt text is populated via the Alt Text tool, not this pipeline"
+        }
+      ],
+      "examples": [],
+      "dynamic": true,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "unspecified",
+      "specialFeatures": [
+        {
+          "name": "News Folder Selection",
+          "description": "The component pulls news stories from a user-specified folder.",
+          "importance": "normal"
+        },
+        {
+          "name": "Topic Filter",
+          "description": "Stories are filtered by a user-specified Topic.",
+          "importance": "normal"
+        },
+        {
+          "name": "More Information Link",
+          "description": "A link can be added to direct users to more information or more news stories.",
+          "importance": "normal"
+        },
+        {
+          "name": "Title Character Limit",
+          "description": "Title text is limited to 100 characters.",
+          "importance": "normal"
+        },
+        {
+          "name": "Description Character Limit",
+          "description": "Description text is limited to 198 characters.",
+          "importance": "normal"
+        },
+        {
+          "name": "Link Character Limit",
+          "description": "Link text is limited to 50 characters.",
+          "importance": "normal"
+        }
+      ],
+      "screenshotAsset": "component-examples/featured-topic-listing.png",
+      "sourceSites": [
+        "new"
+      ]
+    },
+    {
+      "name": "Four Image Grid",
+      "category": "Page Content",
+      "purpose": "Use Four Image Grid when you want to present four linked images in a grid for things like initiatives, faculty and staff, or housing. It is not for mixing with classic components, and it only works when all four image/link slots are provided.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Description",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Link",
+          "fieldType": "link",
+          "constraints": "max 4",
+          "notes": "link mode: optional"
+        },
+        {
+          "name": "Image (up to 4)",
+          "fieldType": "image",
+          "constraints": "max 4 image(s), never confirmed as an exact requirement by the public catalog",
+          "notes": "alt text is populated via the Alt Text tool, not this pipeline"
+        }
+      ],
+      "examples": [],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "new_look",
+      "specialFeatures": [
+        {
+          "name": "Exactly four links and images",
+          "description": "The component only supports exactly four links and four images; if you do not add all four, it will not work.",
+          "importance": "critical"
+        },
+        {
+          "name": "New look only",
+          "description": "This component is part of the new look group and should only be used with other new look components, not classic components.",
+          "importance": "critical"
+        },
+        {
+          "name": "Blue overlay and hover effect",
+          "description": "Images use a baked-in blue overlay and a hover effect on hover-enabled devices.",
+          "importance": "normal"
+        }
+      ],
+      "screenshotAsset": "component-examples/four-image-grid.png",
+      "sourceSites": [
+        "new"
+      ]
+    },
+    {
+      "name": "Hero Landing with Links",
+      "category": "Page Content",
+      "purpose": "Use this hero when you want a page-opening banner that can prominently surface a small set of important links. It is meant for quick access to key destinations and is not intended to be mixed with non–new look components.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Description",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Button",
+          "fieldType": "button",
+          "constraints": "max 1 button(s); allowed color(s) not confirmed by the public catalog",
+          "notes": ""
+        },
+        {
+          "name": "Link",
+          "fieldType": "link",
+          "constraints": "max 3",
+          "notes": "link mode: optional"
+        },
+        {
+          "name": "Image",
+          "fieldType": "image",
+          "constraints": "max 1 image(s), never confirmed as an exact requirement by the public catalog",
+          "notes": "alt text is populated via the Alt Text tool, not this pipeline"
+        }
+      ],
+      "examples": [],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "new_look",
+      "specialFeatures": [
+        {
+          "name": "New look only",
+          "description": "This component belongs to the new look set and should only be used with other new look components.",
+          "importance": "critical"
+        },
+        {
+          "name": "Up to three links",
+          "description": "The hero can include as many as three links at the top of the page, keeping them visible in the main viewport.",
+          "importance": "normal"
+        },
+        {
+          "name": "Built-in image gradient",
+          "description": "The image includes a gradient that can be placed on the bottom or the left, selected in the Details pane.",
+          "importance": "normal"
+        }
+      ],
+      "screenshotAsset": "component-examples/hero-landing-with-links.png",
+      "sourceSites": [
+        "new"
+      ]
+    },
+    {
+      "name": "Hero with Slate",
+      "category": "Page Content",
+      "purpose": "Use this component for a page hero paired with a Slate form.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Description",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        }
+      ],
+      "examples": [
+        "A program page hero that invites students to request more information through a Slate form.",
+        "A recruitment page hero that leads into a short Slate RSVP form for an info session."
+      ],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "unspecified",
+      "specialFeatures": [],
+      "screenshotAsset": null,
+      "sourceSites": [
+        "new"
+      ]
+    },
+    {
+      "name": "News Topic Archive",
+      "category": "News",
+      "purpose": "Use this component to display a searchable, filterable archive of news articles from a user-selected branch that are tagged with a user-selected Topic. It is not for manually authored article lists, and it only returns items entered as a News Detail Page template.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Description",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Image",
+          "fieldType": "image",
+          "constraints": "max 1 image(s), never confirmed as an exact requirement by the public catalog",
+          "notes": "alt text is populated via the Alt Text tool, not this pipeline"
+        }
+      ],
+      "examples": [],
+      "dynamic": true,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "unspecified",
+      "specialFeatures": [
+        {
+          "name": "User-specified news branch",
+          "description": "The component pulls all matching news articles from a branch selected by the editor.",
+          "importance": "normal"
+        },
+        {
+          "name": "Topic filter",
+          "description": "The archive is filtered by a Topic selected by the editor.",
+          "importance": "normal"
+        },
+        {
+          "name": "Searchable and filterable cards",
+          "description": "Returned articles appear as cards that end users can search and filter.",
+          "importance": "normal"
+        },
+        {
+          "name": "News Detail Page template only",
+          "description": "It only returns articles entered in Sitecore as a News Detail Page template.",
+          "importance": "normal"
+        },
+        {
+          "name": "Best used alone on the page",
+          "description": "The component is intended to be the only component on a page because it expands the page to fit all articles.",
+          "importance": "normal"
+        }
+      ],
+      "screenshotAsset": "component-examples/news-topic-archive.png",
+      "sourceSites": [
+        "new"
+      ]
+    },
+    {
+      "name": "Quick Facts Hero",
+      "category": "Headers",
+      "purpose": "This hero is for surfacing a page title, short description, one CTA, and a small set of quick facts at the top of a page, especially for program details, events, or other brief information. It is not a rich-text-heavy hero; the body is limited and the layout is meant for concise content.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Description",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Button",
+          "fieldType": "button",
+          "constraints": "max 1 button(s); allowed color(s) not confirmed by the public catalog",
+          "notes": ""
+        },
+        {
+          "name": "Link",
+          "fieldType": "link",
+          "constraints": "optional, max not confirmed",
+          "notes": "link mode: optional"
+        },
+        {
+          "name": "Image",
+          "fieldType": "image",
+          "constraints": "max 1 image(s), never confirmed as an exact requirement by the public catalog",
+          "notes": "alt text is populated via the Alt Text tool, not this pipeline"
+        }
+      ],
+      "examples": [
+        "A program page hero with a short overview, one link button, and four short facts like format, location, application type, and contact method.",
+        "An event landing page hero with a brief summary, one call-to-action button, and a few quick details such as date, time, audience, and location."
+      ],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "unspecified",
+      "specialFeatures": [
+        {
+          "name": "Title controlled by Page Title",
+          "description": "The hero title is controlled by the page title rather than an author-entered hero title field.",
+          "importance": "normal"
+        },
+        {
+          "name": "Up to four quick facts",
+          "description": "The component supports a maximum of four quick facts.",
+          "importance": "normal"
+        },
+        {
+          "name": "CTA",
+          "description": "The hero includes a call to action.",
+          "importance": "normal"
+        }
+      ],
+      "screenshotAsset": "component-examples/quick-facts-hero.png",
+      "sourceSites": [
+        "new"
+      ]
+    },
+    {
+      "name": "Right Grid Content Block with Links",
+      "category": "Page Content",
+      "purpose": "Use this content block when you want to add a prominent main CTA and a grid of linked items on the same section of a page. It is not meant for classic-look components, and it depends on the right-grid set being built to the component’s exact four-item structure.",
+      "fields": [
+        {
+          "name": "Title",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Description",
+          "fieldType": "plaintext",
+          "constraints": "not confirmed",
+          "notes": ""
+        },
+        {
+          "name": "Button",
+          "fieldType": "button",
+          "constraints": "max 1 button(s); allowed color(s) not confirmed by the public catalog",
+          "notes": ""
+        },
+        {
+          "name": "Link",
+          "fieldType": "link",
+          "constraints": "max 4",
+          "notes": "link mode: optional"
+        },
+        {
+          "name": "Image (up to 4)",
+          "fieldType": "image",
+          "constraints": "max 4 image(s), never confirmed as an exact requirement by the public catalog",
+          "notes": "alt text is populated via the Alt Text tool, not this pipeline"
+        }
+      ],
+      "examples": [],
+      "dynamic": false,
+      "chrome": false,
+      "sharedCopyUnconfirmed": false,
+      "visualVariant": "new_look",
+      "specialFeatures": [
+        {
+          "name": "Main CTA link",
+          "description": "Supports a main CTA link using the new style.",
+          "importance": "normal"
+        },
+        {
+          "name": "Four-item right grid",
+          "description": "Displays four linked items arranged in a square grid to the right of the main CTA.",
+          "importance": "critical"
+        },
+        {
+          "name": "Exactly four images required",
+          "description": "The component only works if exactly four images are added.",
+          "importance": "critical"
+        },
+        {
+          "name": "Hover effect on images",
+          "description": "Images have a hover effect on devices that support hover.",
+          "importance": "normal"
+        }
+      ],
+      "screenshotAsset": "component-examples/right-grid-content-block-with-links.png",
+      "sourceSites": [
+        "new"
+      ]
+    }
+  ]
+}

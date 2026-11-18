@@ -1,0 +1,18 @@
+MavDitto
+Copyright 2026 Ashzaeen Fatmi Khan
+
+Licensed under the Apache License, Version 2.0 (see LICENSE).
+
+This product includes software and data from other sources:
+
+  * vendor/anthropic_brand_voice/ -- Anthropic's "brand-voice" plugin files,
+    Apache-2.0, copied unmodified. See vendor/anthropic_brand_voice/NOTICE.
+
+  * config/seed/uta/ -- an optional starter configuration derived from
+    material The University of Texas at Arlington publishes on the public web
+    (its editorial guidelines, public news releases and public design-system
+    site). Every knowledge-base fact carries its source URL. This data is
+    UTA's, not MavDitto's: MavDitto is an independent project that is not
+    affiliated with, endorsed by, or supported by UTA, and "UTA" and "The
+    University of Texas at Arlington" are UTA's marks. The seed is provided
+    as a convenience and example; you are responsible for any use of it.

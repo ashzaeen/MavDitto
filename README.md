@@ -11,11 +11,14 @@ whole point of this tool.
 ## Disclaimer
 
 MavDitto is an independent, unofficial, open-source project. It is not affiliated
-with, endorsed by, or supported by The University of Texas at Arlington. The
-repository ships no university data, brand material, or credentials: crawl
-output, caches, and the brand-voice, knowledge-base, and component-catalog
-configs are generated locally and git-ignored. Bring your own configuration and
-only point it at sites you are authorized to scan.
+with, endorsed by, or supported by The University of Texas at Arlington (UTA).
+The repository ships no credentials, crawl output or caches. The one UTA-related
+thing it includes is an **optional starter profile** in `config/seed/uta/`,
+derived from material UTA publishes on the public web (its editorial guidelines,
+public news releases and public design-system site); every fact in it carries its
+source URL. That data is UTA's, and "UTA" is UTA's mark. The profile is a
+convenience and an example: use your own configuration for anything real, and only
+point the tool at sites you are authorized to scan.
 
 ## What's inside
 
@@ -108,6 +111,19 @@ python -m venv .venv
 .venv/Scripts/python.exe -m pip install -r requirements.txt   # Windows
 .venv/Scripts/python.exe -m playwright install chromium
 ```
+
+Then give the writing and page-building tools something to read. Either seed the
+starter profile (UTA's public brand voice, facts and component catalog), or generate
+your own with the dashboard's Setup Wizard:
+
+```bash
+.venv/Scripts/python.exe scripts/seed_config.py            # copies config/seed/uta/ into config/
+.venv/Scripts/python.exe scripts/seed_config.py --list     # available profiles
+.venv/Scripts/python.exe scripts/seed_config.py --force    # overwrite existing files
+```
+
+It never overwrites your own files unless you pass `--force`. The migration check,
+Alt Text and Broken Link Inspector work without any config.
 
 Phase 3 pulls torch (~2.5 GB on disk). The embedding model itself is a 90 MB
 download on first use and is cached afterwards; loading it costs about twenty
@@ -796,7 +812,9 @@ docs/
   design/             build plan, design system, per-tool design guides
 config/               your own brand voice, knowledge base and component catalog
                       (generated locally, git-ignored; see config/README.md)
-scripts/              one-off catalog migration helpers
+  seed/uta/           optional starter profile, installed by scripts/seed_config.py
+scripts/              seed_config.py, plus one-off catalog migration helpers
+LICENSE, NOTICE       Apache-2.0, and attribution for vendored and seeded material
 vendor/               the brand-voice writing method, vendored under Apache-2.0
 tests/                see Tests below
 data/
@@ -810,11 +828,17 @@ data/
 .venv/Scripts/python.exe -m pytest tests/ -q
 ```
 
-About 630 tests run on a fresh clone, all offline against fixtures in `tests/fixtures.py`. A few
+About 640 tests run on a fresh clone, all offline against fixtures in `tests/fixtures.py`. A few
 modules (brand voice, Content Writer generation, review, rewrite and Web Builder matching) assert
-against your own brand-voice, knowledge-base and component config, which is git-ignored; on a
-fresh clone they are skipped with a note, and they run once you have generated that config with
-the Setup Wizard. The offline suite includes the
+against a brand-voice, knowledge-base and component config, which is git-ignored; on a fresh clone
+they are skipped with a note. Run `python scripts/seed_config.py` (or generate your own config with
+the Setup Wizard) and the whole suite runs: 786 tests. The offline suite includes the
 synthetic worst-case pair from the build plan: a page and a version of it that
 drops a fee, a GPA requirement, a whole section, an image's alt text and a PDF
 link, while still reading as fluent prose.
+
+## License
+
+[Apache License 2.0](LICENSE). Copyright 2026 Ashzaeen Fatmi Khan. See [NOTICE](NOTICE) for the vendored
+brand-voice method (also Apache-2.0) and for the status of the optional UTA starter profile, which is
+UTA's material and is not covered by this license.

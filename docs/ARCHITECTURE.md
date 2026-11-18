@@ -558,7 +558,12 @@ flowchart LR
         vend["vendor/anthropic_brand_voice/<br/>(Apache-2.0, with NOTICE)"]:::committed
         docs["docs/ and docs/design/"]:::committed
         cfgreadme["config/README.md"]:::committed
+        seedp["config/seed/uta/<br/>optional starter profile<br/>(public-source UTA data, with source URLs)"]:::committed
+        seeder["scripts/seed_config.py"]:::committed
     end
+
+    seeder -- "copies, never overwrites<br/>without --force" --> c1 & c2 & c3
+    seedp --> seeder
 
     subgraph LOCAL["Generated locally, git-ignored"]
         d1["data/run/<br/>per-pair JSON, CSVs, discovery.json"]:::ignored
@@ -572,4 +577,4 @@ flowchart LR
     end
 ```
 
-No university data, brand material or credentials ship in the repository. Crawl output, caches and the three config files are produced on your own machine, and the repository's disclaimer asks that it only be pointed at sites you are authorized to scan.
+No credentials, crawl output or caches ship in the repository. The brand-voice, knowledge-base and component config are yours: generate them with the Setup Wizard, or run `python scripts/seed_config.py` to install the optional starter profile in `config/seed/uta/`. That profile is derived from material UTA publishes on the public web, and it remains UTA's content (see `NOTICE`). The repository's disclaimer asks that the tool only be pointed at sites you are authorized to scan.
