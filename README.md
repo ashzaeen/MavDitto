@@ -1,12 +1,19 @@
 # MavDitto
 
-Migration content QA. Given an old subsite and its replacement, MavDitto pairs
-up the pages, compares them structurally and semantically, and ranks them by how
-likely it is that content was **lost** rather than merely reworded.
+**A content operations toolkit for web teams.** MavDitto covers the whole life of a site's content in one dashboard: check a migration for content that was *lost*, audit links and image descriptions, write copy in your brand's voice, and turn that copy into ready-to-paste components. Every tool shares the same fetching, extraction and LLM plumbing, and a person reviews the result at each step.
 
-A plain text-diff cannot tell "we rewrote this paragraph for tone" from "we
-rewrote this paragraph and dropped the tuition figure." That distinction is the
-whole point of this tool.
+```mermaid
+flowchart LR
+    A["<b>Migrate</b><br/>Migration QA<br/>what did the new site lose?"] --> B["<b>Audit</b><br/>Broken Link Inspector<br/>Alt Text"]
+    B --> C["<b>Write</b><br/>Content Writer<br/>on-brand copy, reviewed"]
+    C --> D["<b>Build</b><br/>Web Builder<br/>components, ready to paste"]
+    E["<b>Setup Wizard</b><br/>your brand voice, facts and component library"] -.-> C
+    E -.-> D
+```
+
+Most site tools stop at one of these jobs, usually reporting on a live site. MavDitto covers all of them in one place: the migration check and the audits tell you what is wrong, the Content Writer drafts and reviews the fix in your brand voice, and its output goes straight into the Web Builder, which places it into your real component library.
+
+Its sharpest tool is the migration check. A plain text-diff cannot tell "we rewrote this paragraph for tone" from "we rewrote this paragraph and dropped the tuition figure." Given an old subsite and its replacement, MavDitto pairs up the pages, compares them structurally and semantically, and ranks them by how likely it is that content was **lost** rather than merely reworded. That distinction is the whole point of that tool.
 
 ## Disclaimer
 
@@ -22,7 +29,7 @@ point the tool at sites you are authorized to scan.
 
 ## What's inside
 
-The core is the migration check above. Around it, the dashboard grew five more tools that share the same fetching, extraction and LLM plumbing:
+Six tools, one dashboard:
 
 | Tool | What it does | Needs an LLM key |
 | --- | --- | --- |
@@ -131,7 +138,7 @@ seconds per process, and it is loaded lazily, so `--no-semantic` never pays for
 it. The `anthropic` package is installed but only used by the LLM judge, which
 is opt-in; nothing else in the pipeline needs credentials.
 
-## Start here: two root URLs
+## Migration QA: start with two root URLs
 
 ```bash
 cd dashboard-react && npm install && npm run build && cd ..
