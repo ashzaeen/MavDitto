@@ -5,12 +5,19 @@
 // any console or page error, and prints the first lines of what actually
 // rendered so a blank-but-error-free screen cannot pass.
 //
-//   npm run preview -- --port 5178
-//   node smoke.mjs
+// Run it against the real server, which serves this build and the /api routes
+// the pages call (`vite preview` has no backend, so every page would log a
+// failed /api request):
+//
+//   npm run build
+//   python -m src.server --results data/run      # from the repo root, port 8000
+//   node smoke.mjs                               # or set BASE_URL
+//
+// The migration routes need a results folder with at least one compared pair.
 
 import { chromium } from 'playwright';
 
-const base = process.env.BASE_URL ?? 'http://127.0.0.1:5178';
+const base = process.env.BASE_URL ?? 'http://127.0.0.1:8000';
 // Each route names something that must actually be on the page. A render that
 // throws no errors but shows an empty table is still broken, and a length
 // threshold alone lets that through -- it did, once.
@@ -24,7 +31,8 @@ const routes = [
   ['/migration/pages/1', 'Page detail', /The pages, side by side/i, () => true],
   ['/alt-text', 'Alt text', /Alt text generator/i, () => true],
   ['/broken-links', 'Broken links', /Broken link inspector/i, () => true],
-  ['/broken-links/link/0', 'Link detail', /Nothing here yet/i, () => true],
+  // Any /broken-links/* path redirects back to the inspector (see App.jsx).
+  ['/broken-links/link/0', 'Link redirect', /Broken link inspector/i, () => true],
   ['/content-writer', 'Content writer', /Content writer/i, () => true],
   ['/web-builder', 'Web builder', /Web [Bb]uilder/i, () => true],
   ['/setup', 'Setup wizard', /Set up MavDitto/i, () => true],

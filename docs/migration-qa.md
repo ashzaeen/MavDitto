@@ -46,7 +46,18 @@ the worst migration failure there is, and a pairwise content diff structurally
 cannot find it — you cannot compare a page against a replacement it does not
 have. Only enumerating both sides finds those.
 
-Four outputs land in `--out`:
+What lands in `--out` depends on the command.
+
+`python -m src.run_pipeline` (and the dashboard's run) writes what the dashboard reads:
+
+| file | what it is |
+| --- | --- |
+| `discovery.json` | every page found on each side, which old pages were paired, and which have no counterpart (`not_migrated`) |
+| `url_pairs.csv` | the old→new map, which doubles as a redirect map |
+| one JSON file per compared pair | the full comparison, including the risk verdict and its reasons |
+| `web.json` | the same results bundled for the dashboard |
+
+`python -m src.discover_cli` is the discovery-only command. It additionally writes spreadsheets for people to work from:
 
 | file | what it is |
 | --- | --- |

@@ -22,7 +22,7 @@ scratch_*.png
 dashboard-react/_debug_*.mjs
 
 # Local run output and user-supplied config (never commit)
-data/
+/data/
 config/brand-voice.json
 config/knowledge-base.json
 config/components.json
