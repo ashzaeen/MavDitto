@@ -8,8 +8,6 @@ A plain text-diff cannot tell "we rewrote this paragraph for tone" from "we
 rewrote this paragraph and dropped the tuition figure." That distinction is the
 whole point of this tool.
 
-See `MavDitto — Build Plan.md` for the full design.
-
 ## Disclaimer
 
 MavDitto is an independent, unofficial, open-source project. It is not affiliated
@@ -18,6 +16,74 @@ repository ships no university data, brand material, or credentials: crawl
 output, caches, and the brand-voice, knowledge-base, and component-catalog
 configs are generated locally and git-ignored. Bring your own configuration and
 only point it at sites you are authorized to scan.
+
+## What's inside
+
+The core is the migration check above. Around it, the dashboard grew five more tools that share the same fetching, extraction and LLM plumbing:
+
+| Tool | What it does | Needs an LLM key |
+| --- | --- | --- |
+| **Migration QA** | Pairs two sites' pages, compares them structurally and semantically, ranks them by likely content loss, and lists old pages with no counterpart at all. | Only for the optional judge |
+| **Alt Text** | Writes a short, accurate description for one image, an upload, or every real image on a page. | Yes |
+| **Broken Link Inspector** | Audits the links on one page or a whole subsite: broken, redirected, restricted, broken anchors, malformed email and phone links. | No |
+| **Content Writer** | Rewrites a URL or uploaded file into a configured brand voice, or writes new copy from 15 templates. Every draft is reviewed and exports to Markdown, text, HTML, Word or PDF. | Yes |
+| **Web Builder** | Maps structured content onto a component library: a reviewable layout plan first, then populated, ready-to-paste fields. | Yes |
+| **Setup Wizard** | Turns your own material into the local brand-voice, knowledge-base and component configs the writing tools read. | Yes |
+
+The LLM provider is your choice (Claude, OpenAI or Gemini), set in the dashboard's Settings, and every call is checked against a spend cap first.
+
+### How it fits together
+
+```mermaid
+flowchart LR
+    subgraph FE["Browser: React dashboard (Vite)"]
+        UI["Migration QA / Alt Text / Broken Links<br/>Content Writer / Web Builder / Setup / Settings"]
+    end
+
+    subgraph SRV["src/server.py (stdlib http.server, 127.0.0.1 only)"]
+        API["JSON API + static bundle"]
+    end
+
+    subgraph TOOLS["Tools"]
+        MQA["Migration QA<br/>discover, pair, diff, score"]
+        LC["link_checker"]
+        AT["alt_text"]
+        CW["content_writer"]
+        WB["web_builder"]
+        SE["setup_engine"]
+    end
+
+    subgraph SHARED["Shared plumbing"]
+        FETCH["fetch.py<br/>polite fetcher + cache"]
+        EXT["extract.py<br/>text, headings, images, links, blocks"]
+        LLM["llm_provider.py<br/>+ llm_config.py + llm_cost.py"]
+    end
+
+    subgraph EXTERNAL["Outside"]
+        WEB[("Websites<br/>live or Wayback")]
+        PROV[("Claude / OpenAI / Gemini")]
+    end
+
+    subgraph DISK["Local disk (git-ignored)"]
+        DATA[("data/<br/>run results, cache, llm_config.json")]
+        CONF[("config/<br/>brand voice, knowledge base, components")]
+    end
+
+    UI <--> API
+    API --> MQA & LC & AT & CW & WB & SE
+    MQA & LC & AT & CW --> FETCH
+    FETCH --> WEB
+    FETCH --> EXT
+    MQA & AT & CW & WB & SE --> LLM
+    LLM --> PROV
+    MQA --> DATA
+    CW & WB & SE --> CONF
+    LLM --> DATA
+```
+
+Diagrams for every pipeline (pairing, fetching, scoring, the judge, link checking, Content Writer, Web Builder, setup and the provider layer) are in [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md). The design reasoning is in [docs/design/](docs/design).
+
+The full plan for the migration pipeline is in [docs/design/build-plan.md](docs/design/build-plan.md).
 
 ## Status
 
@@ -184,9 +250,10 @@ default.
 python -m src.server --results data/run --port 8000
 ```
 
-`src/server.py` serves the built React app and exposes five endpoints:
-`GET /api/data`, `POST /api/run`, `GET /api/run`, `POST /api/run/cancel`, and
-`POST /api/judge`.
+`src/server.py` serves the built React app and a JSON API: the migration endpoints
+(`GET /api/data`, `GET`/`POST /api/run`, `POST /api/run/cancel`, `POST /api/judge`)
+plus one group per tool (alt text, link check, content writer, web builder, setup and
+config). The full list is in [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md#3-server-api).
 Standard library only — this is a single-user tool on localhost, and a web
 framework would be a dependency earning nothing. It binds to `127.0.0.1` and
 should stay there: the run endpoint fetches arbitrary URLs on request.
@@ -714,12 +781,24 @@ src/
   server.py           serves the dashboard and runs comparisons for it
   inspect_page.py     single-page CLI
   compare.py          old-vs-new pair CLI
-  discover_cli.py     crawl-and-pair CLI
+  llm_provider.py     one entry point for every LLM call (Claude, OpenAI, Gemini)
+  llm_config.py       provider and API-key settings, kept in data/llm_config.json
+  link_checker/       Broken Link Inspector: extract, categorize, check, crawl a site
+  content_writer/     rewrite / generate / refine / review / export, brand voice, templates
+  web_builder/        match sections to components, populate fields, validate
+  setup_engine/       freeform material -> draft brand-voice and component configs
 dashboard-react/
   src/                the dashboard (see its own README)
   smoke.mjs           headless render check for every route
   run-e2e.mjs         drives the form and waits for a real run to finish
-tests/                274 tests, no network required
+docs/
+  ARCHITECTURE.md     diagrams of every pipeline
+  design/             build plan, design system, per-tool design guides
+config/               your own brand voice, knowledge base and component catalog
+                      (generated locally, git-ignored; see config/README.md)
+scripts/              one-off catalog migration helpers
+vendor/               the brand-voice writing method, vendored under Apache-2.0
+tests/                see Tests below
 data/
   run/                results: per-pair JSON + discovery.json
   cache/              fetch cache (gitignored)
@@ -731,7 +810,11 @@ data/
 .venv/Scripts/python.exe -m pytest tests/ -q
 ```
 
-All tests run offline against fixtures in `tests/fixtures.py`, including the
+About 630 tests run on a fresh clone, all offline against fixtures in `tests/fixtures.py`. A few
+modules (brand voice, Content Writer generation, review, rewrite and Web Builder matching) assert
+against your own brand-voice, knowledge-base and component config, which is git-ignored; on a
+fresh clone they are skipped with a note, and they run once you have generated that config with
+the Setup Wizard. The offline suite includes the
 synthetic worst-case pair from the build plan: a page and a version of it that
 drops a fee, a GPA requirement, a whole section, an image's alt text and a PDF
 link, while still reading as fluent prose.

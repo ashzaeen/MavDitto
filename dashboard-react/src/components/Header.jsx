@@ -18,7 +18,7 @@ import LlmConfigModal from './LlmConfigModal.jsx';
 import { useTheme } from '../ThemeContext.jsx';
 
 // The app shell: a persistent left icon rail (one icon per whole tool, never
-// per view -- see Project Files/MavDitto — Adobe Acrobat–Inspired UX Rehaul.md)
+// per view -- see docs/design/ux-rehaul.md)
 // plus a slim top bar (breadcrumb, search, theme toggle, a contextual primary
 // action slot). Both barely change shape no matter which tool is open, so
 // switching tools never feels like landing in a different app.

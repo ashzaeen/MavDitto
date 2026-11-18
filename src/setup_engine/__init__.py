@@ -6,6 +6,5 @@ pre-committed, hand-authored -- see Phase 1 of the build).
 
 Reuses `content_writer.extraction` for pulling text out of whatever material
 was uploaded (a URL, a doc, a screenshot), the same handlers Content Writer
-itself uses -- see `Project Files/MavDitto — Content Writer & Web Builder:
-Plan & Design Guide.md`'s "Setup engine (freeform ingestion)" section.
+itself uses -- see `docs/design/content-writer-web-builder.md`'s "Setup engine (freeform ingestion)" section.
 """

@@ -2,7 +2,6 @@
 voice, producing structured sectioned copy Web Builder can map onto real
 Sitecore components.
 
-See ``Project Files/MavDitto — Content Writer & Web Builder: Plan & Design
-Guide.md``. Start at ``pipeline.py``: ``rewrite_page`` is the entry point
+See ``docs/design/content-writer-web-builder.md``. Start at ``pipeline.py``: ``rewrite_page`` is the entry point
 everything else in this package supports.
 """

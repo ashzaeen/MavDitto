@@ -60,9 +60,9 @@ class SpecialFeature:
 
 @dataclass
 class ComponentSpec:
-    """One catalog entry -- see config/components.json and
-    Project Files/uta-component-catalog-verified.md for where the
-    underlying data came from, and `scripts/migrate_catalog_schema.py` /
+    """One catalog entry -- see config/components.json (generated
+    locally by the Setup Wizard; see config/README.md) for where the
+    underlying data comes from, and `scripts/migrate_catalog_schema.py` /
     `scripts/build_catalog_v3.py` for how it was reshaped and reconciled
     across UTA's old and new design-system sites. `dynamic`/`chrome`/
     `shared_copy_unconfirmed` stay component-level flags (not per-field)."""

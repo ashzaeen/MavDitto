@@ -1,4 +1,4 @@
-/* Design tokens -- see Project Files/DESIGN.md. Light mode is UTA-branded
+/* Design tokens -- see docs/design/DESIGN.md. Light mode is UTA-branded
    (UTA Blue accent, UTA Web Blue headings, orange strictly decorative); dark
    mode is deliberately brand-neutral, a normal well-built dev-tool dark theme
    rather than a dimmed UTA skin. Both themes keep Notion's whisper-border,
@@ -171,8 +171,7 @@ select:focus-visible,
 
 /* App shell: a left icon rail (one icon per whole tool) spanning full
    height, plus a slim top bar beside it that barely changes shape no matter
-   which tool is open -- see Project Files/MavDitto — Adobe Acrobat–Inspired
-   UX Rehaul.md. .app is the 2-column/2-row grid every page's top-level div
+   which tool is open -- see docs/design/ux-rehaul.md. .app is the 2-column/2-row grid every page's top-level div
    already provides; Header renders the rail <nav> and the .topbar as two
    sibling elements (a Fragment), and .page-body is the grid's third child. */
 .app {
